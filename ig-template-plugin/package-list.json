@@ -1,0 +1,7 @@
+﻿{
+  "package-id" : "plugin.healthcare.template",
+  "title" : "PLUGIN IG Template",
+  "canonical" : "https://plugin.healthacare/templates/fhir.template",
+  "introduction" : "This is the template for the PLUGIN project.",
+  "list" : []
+}

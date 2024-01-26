@@ -1,0 +1,13 @@
+﻿{
+  "name" : "plugin.healthcare.template",
+  "type" : "fhir.template",
+  "license" : "CC0-1.0",
+  "description" : "PLUGIN IG Template",
+  "author" : "https://plugin.healthacare",
+  "canonical" : "https://plugin.healthacare/templates/fhir.template",
+  "base" : "fhir.base.template",
+  "dependencies" : {
+    "fhir.base.template" : "current"
+  },
+  "version" : "0.0.1"
+}
