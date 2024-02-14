@@ -50,11 +50,13 @@ dependencies:
 # with supported extensions (e.g., .md/.xml) will be treated as
 # sub-pages.
 #
-pages:
-  index.md:
-    title: Home
-  about.md:
-    title: About
+# pages:
+#   index.md:
+#     title: Home
+#   use-cases.md:
+#     title: Use cases
+#   about.md:
+#     title: About
 
   #  recommendations.md:
 #    title: Recommendations
@@ -116,10 +118,17 @@ parameters: #see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Pa
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
+  Use cases:
+    Overzicht: use-cases.html
+    NKR-item: use-case-NKR-item.html
   About: about.html
-  # Examples: examples.html
   Artifacts: artifacts.html
-
+  Support:
+    FHIR Spec: new-tab https://hl7.org/fhir/index.html
+    FHIR IPS: new-tab https://hl7.org/fhir/uv/ips/index.html
+    Artefacts (JSON): definitions.json.zip
+    Artefacts (XML): definitions.xml.zip
+    Download IG: full-ig.zip
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
 # │  resource. These properties are less commonly needed than those above.                         │
