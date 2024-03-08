@@ -3,7 +3,9 @@ Profile: PluginPatient
 Parent: nl-core-Patient
 // Parent: Patient
 Id: plugin-patient
-Description: "De resource Patient beschrijft de gegevens die van een patiënt (moeten) worden vastgelegd."
+Description: """Describes the Patient resource as used by the Dutch PLUGIN project.
+Inherits from [nl-core-Patient](https://simplifier.net/nictiz-r4-zib2020/nlcorepatient).
+"""
 * active = true
 * identifier 1..* MS
 * name 1..* MS

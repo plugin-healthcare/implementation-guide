@@ -7,7 +7,7 @@ ig:
 deploy:
 	@echo "************************************************************"
 	@echo "Uploading files to https://plugin.healthcare"
-	scp -r output sieswerda.net:public_html/fhir/ImplementationGuide/default
+	scp -r output/* sieswerda.net:public_html/fhir/ImplementationGuide/default/
 
 clean:
 	rm -r fsh-generated
