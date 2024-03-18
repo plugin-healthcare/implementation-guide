@@ -1,7 +1,8 @@
+// -------------------------------------------------------------------------------
+//  Resource Profile
+// -------------------------------------------------------------------------------
 Profile: PluginPatient
-// Using nl-core-Patient currently results in an error, likely due to a missing snapshot in the source package.
 Parent: nl-core-Patient
-// Parent: Patient
 Id: plugin-patient
 Description: """Describes the Patient resource as used by the Dutch PLUGIN project.
 Inherits from [nl-core-Patient](https://simplifier.net/nictiz-r4-zib2020/nlcorepatient).

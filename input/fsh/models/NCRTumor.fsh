@@ -1,5 +1,8 @@
-Logical: TumorNKR
-Id: TumorNKR
+// -------------------------------------------------------------------------------
+//  Logical Model
+// -------------------------------------------------------------------------------
+Logical: NCRTumor
+Id: NCRTumor
 Title: "NCR Tumor"
 Description:  """Logical model for a Tumor as used for the PLUGIN use-case NCR-item.
 Maturity Level: 0 Draft

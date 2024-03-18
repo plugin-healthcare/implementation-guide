@@ -11,12 +11,12 @@ Maturity Level: 0 Draft
 """
 * purpose = """The purpose of this mapping is to show how the generic PLUGIN information model can be used to populate the patient data needed for the NCR.
 """
-* sourceUri = "https://plugin.healthcare/fhir/StructureDefinition/PatientNKR"
+* sourceUri = "https://plugin.healthcare/fhir/StructureDefinition/NCRPatient"
 * targetUri[+] = "https://plugin.healthcare/fhir/StructureDefinition/plugin-patient"
-* group[+].source = "https://plugin.healthcare/fhir/StructureDefinition/PatientNKR"
+* group[+].source = "https://plugin.healthcare/fhir/StructureDefinition/NCRPatient"
 * group[=].target = "https://plugin.healthcare/fhir/StructureDefinition/plugin-patient"
 
-* group[=].element[+].code = #PatientNKR.gender
+* group[=].element[+].code = #NCRPatient.gender
 * group[=].element[=].display = "Gender"
 * group[=].element[=].target.code = #PluginPatient.gender
 * group[=].element[=].target.display = "Gender"
