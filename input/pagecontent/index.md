@@ -15,10 +15,11 @@ Het centraliseren van volledige (gespeudonimiseerde) patiëntendossiers is echte
 Daarnaast is klinische data nog niet altijd in een standaard, zoals FHIR, aanwezig, wat analyse en ontwikkeling van AI-toepassingen bemoeilijkt en vertraagd. Voor hergebruik van klinische data dienen IT-afdelingen van ziekenhuizen nu telkens opnieuw maatwerk infrastructuur te leveren, met hogere complexiteit en kosten tot gevolg. Tot slot is de omvang van klinische data in ziekenhuizen vaak te beperkt voor AI-toepassingen. En werken de data scientisten in ziekenhuizen vaak alleen, wat de ontwikkeling van AI-toepassingen vertraagd. De eventueel ontwikkelden AI-toepassingen in een ziekenhuis zijn niet altijd schaalbaar naar een volgend ziekenhuis, waardoor veel AI-toepassingen blijven hangen in Technology Readiness Levels (TRL) 4.
 
 #### De oplossing
-De PLUGIN infrastructuur biedt een alternatief voor gecentraliseerde dataopslag en -analyse. Dit wordt ook wel een federatieve aanpak genoemd. Hierbij worden algoritmen/berekeningen naar de data gebracht en blijft de data (veilig) bij de bron. In combinatie met FHIR standaardisatie aan de bron biedt PLUGIN één infrastructuur die voor meerdere doeleinden kan worden gebruikt.
+De PLUGIN infrastructuur biedt een alternatief voor gecentraliseerde dataopslag en -analyse: een federatieve aanpak. Hierbij worden algoritmen/berekeningen naar de data gebracht en blijft de data (veilig) bij de bron. In combinatie met FHIR standaardisatie aan de bron biedt PLUGIN één infrastructuur die voor meerdere doeleinden kan worden gebruikt.
 
 Via deze federatieve aanpak is het ook mogelijk om statistische analyses uit te voeren of om modellen te trainen middels [Machine Learning](https://en.wikipedia.org/wiki/Machine_learning). Technieken uit de Kunstmatige Intelligentie (AI) bieden zelfs de mogelijkheid om van gegevens uit ongestructureerde bronnen te leren, zoals medische verslaglegging of radiologiebeelden.
 
+De oplossing die PLUGIN beoogt, behelst het standaardiseren van EPD-data naar een landelijk datamodel o.b.v. FHIR en deze te ontsluiten door middel van een federatieve infrastructuur o.b.v. vantage6.
 
 #### Doelstelling
 DHD, IKNL, en EZA willen gezamenlijk één landelijk dekkende, federatieve infrastructuur (PLUGIN) ontwikkelen, van en voor de Nederlandse ziekenhuizen. Hierbij wordt gebruik gemaakt van FAIR data op basis van de HL7 FHIR-standaard en vantage6. Het voornaamste doel is om secundair gebruik van klinische gegevens te vereenvoudigen.
@@ -34,7 +35,10 @@ Hierbij worden de volgende uitgangspunten gehanteerd:
 
 * De infrastructuur is schaalbaar en toekomstbestendig.
 * De infrastructuur past binnen de kaders van [Health-RI](https://www.health-ri.nl).
-* Er wordt aangesloten bij nationale en internationale initiatieven, zoals [CumuluZ](https://www.cumuluz.org) en de [EHDS](https://health.ec.europa.eu/ehealth-digital-health-and-care/european-health-data-space_en).
+* Er wordt aangesloten bij nationale en internationale initiatieven, zoals ...
+  - [CumuluZ](https://www.cumuluz.org)
+  - [mCode](https://www.hl7.org/fhir/us/mcode/)
+  - de [EHDS](https://health.ec.europa.eu/ehealth-digital-health-and-care/european-health-data-space_en).
 * Er wordt vroegtijdig nagedacht over opschaling en financiële borging.
 
 

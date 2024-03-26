@@ -131,6 +131,11 @@ menu:
     Artefacts (JSON): definitions.json.zip
     Artefacts (XML): definitions.xml.zip
     Download IG: full-ig.zip
+  Links:
+    SQL-on-FHIR: new-tab https://fhir.github.io/sql-on-fhir-v2
+    Pathling: new-tab https://pathling.csiro.au/docs/libraries/encoders
+  GitHub: new-tab https://github.com/plugin-healthcare/implementation-guide
+
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
 # │  resource. These properties are less commonly needed than those above.                         │

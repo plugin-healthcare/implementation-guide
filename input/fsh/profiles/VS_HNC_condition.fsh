@@ -1,4 +1,4 @@
-ValueSet: HeadAndNeckCancerVS
+ValueSet: HeadAndNeckCancerConditionVS
 Id: hnc-vs
 Title: "Head and Neck Cancer Conditions"
 Description: "Head and Neck Cancer Conditions"

@@ -12,4 +12,4 @@ Maturity Level: 0 Draft
 * diagnosisCode 1..1 CodeableConcept
     "Diagnosis code, registered using ICD-10."
     """"""
-* diagnosisCode from HeadAndNeckCancerVS
+* diagnosisCode from HeadAndNeckCancerConditionVS
