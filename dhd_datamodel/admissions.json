@@ -1,0 +1,118 @@
+[
+    {
+        "name": "patient_id",
+        "type": "string",
+        "mandatory": true,
+        "description": "Binnen de instelling waar de zorg is verleend gepseudonymiseerde unieke identificatie van de patient"
+    },
+    {
+        "name": "admission_id",
+        "type": "string",
+        "mandatory": true,
+        "description": "Binnen de instellingen waar de zorg is verleend gegenereerd opnamenummer"
+    },
+    {
+        "name": "admission_date",
+        "type": "date",
+        "mandatory": true,
+        "description": "Datum van start opname",
+        "format": "YYYY-MM-DD"
+    },
+    {
+        "name": "admission_time",
+        "type": "time",
+        "mandatory": false,
+        "description": "Tijd van start opname",
+        "format": "hh:mm"
+    },
+    {
+        "name": "discharge_date",
+        "type": "date",
+        "mandatory": true,
+        "description": "Datum van ontslag",
+        "format": "YYYY-MM-DD"
+    },
+    {
+        "name": "discharge_time",
+        "type": "time",
+        "mandatory": false,
+        "description": "Tijd van ontslag",
+        "format": "hh:mm"
+    },
+    {
+        "name": "age_dimension",
+        "type": "integer",
+        "mandatory": true,
+        "description": "Geeft aan of de leeftijd in dagen, maanden of jaren gelezen moet worden. Gebruik de grootst mogelijke leeftijdsdimensie voor de patiënt als geheel getal."
+        "format": {"1": "years", "2": "months", "3": "days"}
+    },
+    {
+        "name": "age",
+        "type": "integer",
+        "mandatory": true,
+        "description": "Leeftijd van de patient op het moment van opname in age_dimension uitgedrukt"
+    },
+    {
+        "name": "gender",
+        "type": "integer",
+        "mandatory": true,
+        "description": "Geslacht van de patient",
+        "format": {"0": "onbekend", "1": "mannelijk", "2": "vrouwelijk", "3": "overig"}
+    },
+    {
+        "name": "urgency",
+        "type": "boolean",
+        "mandatory": true,
+        "description": "Urgentie van de opname",
+        "format": {"0": "geen urgentie", "1": "urgentie"}
+    },
+    {
+        "name": "source_of_admission",
+        "type": "integer",
+        "mandatory": true,
+        "description": "Herkomst van de patient voorafgaand aan de opname",
+        "format": {
+            "0": "Eigen woonomgeving",
+            "1": "Instelling voor revalidatie",
+            "2": "Instelling voor verpleging/verzorging",
+            "3": "Psychiatrisch ziekenhuis",
+            "4": "(Ander) academisch ziekenhuis",
+            "5": "(Ander) algemeen ziekenhuis",
+            "6": "(Ander) categoraal ziekenhuis",
+            "7": "(Ander) ZBC",
+            "8": "Geboren in dit ziekenhuis",
+            "9": "Overige instellingen",
+            "12": "Ziekenhuis in het buitenland",
+            "13": "Hospice"
+        }
+    },
+    {
+        "name": "destination_after_discharge",
+        "type": "integer",
+        "mandatory": true,
+        "description": "Bestemming van de patient na ontslag uit het ziekenhuis",
+        "format": {
+            "0": "Eigen woonomgeving",
+            "1": "Instelling voor revalidatie",
+            "2": "Instelling voor verpleging/verzorging",
+            "3": "Psychiatrisch ziekenhuis",
+            "4": "(Ander) academisch ziekenhuis",
+            "5": "(Ander) algemeen ziekenhuis",
+            "6": "(Ander) categoraal ziekenhuis",
+            "7": "(Ander) ZBC",
+            "8": "Geboren in dit ziekenhuis",
+            "9": "Overige instellingen",
+            "12": "Ziekenhuis in het buitenland",
+            "13": "Hospice"
+        }
+    },
+    {
+        "name": "clinical_specialty",
+        "type": "list",
+        "mandatory": true,
+        "description": "Alle specialismen gekoppeld aan de klinische opnamen",
+        "format": "COD016- VEKT (zie: https://www.vektis.nl/standaardisatie/codelijsten/COD016-VEKT)"
+    }
+]
+
+

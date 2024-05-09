@@ -1,0 +1,50 @@
+[
+    {
+        "name": "patient_id",
+        "type": "string",
+        "mandatory": true,
+        "description": "Binnen de instelling waar de zorg is verleend gepseudonymiseerde unieke identificatie van de patient"
+    },
+    {
+        "name": "admission_id",
+        "type": "string",
+        "mandatory": false,
+        "description": "Binnen de instellingen waar de zorg is verleend gegenereerd opnamenummer. Alleen invullen als bekend anders leeg laten"
+    },
+    {
+        "name": "document_type",
+        "type": "string",
+        "mandatory": true,
+        "description": "Het type document, bijv. ontslagbrief of OK-verslag",
+        "format": ["Ontslagbrief",
+        "OK-verslag",
+        "Poli-brief",
+        "PA-verslag",
+        "Scopieverslag",
+        "PCI/CAG-verslag",
+        "SEH-verslag",
+        "Radiologieverslag",
+        "MDO-verslag",
+        "Unknown"]
+    },
+    {
+        "name": "clinical_specialty",
+        "type": "string",
+        "mandatory": true,
+        "description": "Het specialisme dat het document heeft gepubliceerd, of het specialisme wat PA-onderzoek heeft aangevraagd",
+        "format": "COD016- VEKT (zie: https://www.vektis.nl/standaardisatie/codelijsten/COD016-VEKT)"
+    },
+    {
+        "name": "publication_date",
+        "type": "date",
+        "mandatory": true,
+        "description": "De publicatiedatum van de brief of het verslag",
+        "format": "YYYY-MM-DD"
+    },
+    {
+        "name": "text",
+        "type": "string",
+        "mandatory": true,
+        "description": "De tekst van de brief / verslag"
+    }
+]
