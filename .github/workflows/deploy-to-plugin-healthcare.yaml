@@ -31,10 +31,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install GraphViz and Jekyll
-        # run: sudo apt update; sudo apt install graphviz jekyll
+        # run: sudo apt update; sudo apt install -y graphviz jekyll
         run: |
-          apt update
-          apt -y install graphviz jekyll nodejs npm
+          sudo apt update
+          sudo apt -y install graphviz jekyll nodejs npm
 
       - name: Install sushi (global)
         run: npm install -g fsh-sushi
@@ -62,14 +62,13 @@ jobs:
         run: curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o publisher.jar
 
       - name: Run the IG-Publisher
-        run: java -jar publisher.jar -ig ig.ini
+        run: java -Xms2048m -Xmx8196m -jar publisher.jar -ig ig.ini
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-
 
       - name: Deploy with ssh
         # run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/
