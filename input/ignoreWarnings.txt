@@ -1,5 +1,10 @@
 == Suppressed Messages ==
 
+# This is because we're building logical models. So: boohoo, stop whining.
+%Element names should be simple alphanumerics. See eld-20 at https://hl7.org/fhir/elementdefinition.html#ElementDefinition-inv.
+Inadvisable path%
+WARNING: Inadvisable path%
+
 #  example implemented but not recognized
 #  === http:​/​/hl7​.eu​/fhir​/laboratory​/StructureDefinition​/HumanName-obl-eu-lab
 

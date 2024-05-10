@@ -15,12 +15,16 @@ Alias: $palga-sample-observation = http://fhir.iknl.nl/fhir/iknl-palga-r4/Struct
 Profile: PluginPathologyReport
 Parent: $nl-core-TextResult
 Id: plugin-PathologyReport
-Description: "DiagnosticReport as used within PLUGIN for Pathology."
+Description: """DiagnosticReport as used within PLUGIN for Pathology.
+
+This profile is based on the [PalgaDiagnosticReport](https://simplifier.net/iknl-palga-r4/palgadiagnosticreport)
+profile.
+"""
 * ^status = #draft
 // * extension contains $ named protocol-version 0..1
 * basedOn ..1
 // * basedOn only Reference($palga-procedure-request)
-* basedOn ^type.aggregation = #contained
+// * basedOn ^type.aggregation = #contained
 
 // TODO:
 //   We should make sure category allows for explicit selection of PATHOLOGY
@@ -29,16 +33,17 @@ Description: "DiagnosticReport as used within PLUGIN for Pathology."
 
 * code.text 1..
 * subject 1..
+* subject only Reference(Patient or nl-core-Patient or PluginPatient)
 // * subject only Reference($palga-patient)
-* subject ^type.aggregation = #bundled
+// * subject ^type.aggregation = #bundled
 * performer 1..1
 // * performer only Reference($palga-laboratory)
-* performer ^type.aggregation = #bundled
+// * performer ^type.aggregation = #bundled
 * specimen 1..1
 // * specimen only Reference($palga-specimen)
-* specimen ^type.aggregation = #contained
+// * specimen ^type.aggregation = #contained
 // * result only Reference($palga-sample-observation)
-* result ^type.aggregation = #contained
+// * result ^type.aggregation = #contained
 * conclusion 1..
 * conclusionCode 1..
 * conclusionCode.coding ^slicing.discriminator.type = #value

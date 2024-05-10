@@ -1,4 +1,10 @@
 Profile: PluginClinicalLetter
 Parent: Bundle
 Id: plugin-ClinicalLetter
-Description: "Bundle as used within PLUGIN."
+Description: "Profile for clinical letters as used within PLUGIN."
+
+
+// Profile: PluginClinicalLetterComposition
+// Parent: Composition
+// Id: plugin-ClinicalLetterComposition
+// Description: "Profile for clinical letters as used within PLUGIN."

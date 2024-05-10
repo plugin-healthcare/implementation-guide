@@ -1,10 +1,7 @@
-// -------------------------------------------------------------------------------
-//  Logical Model
-// -------------------------------------------------------------------------------
-Logical: NCRPatient
-Id: NCRPatient
-Title: "NCR Patient"
-Description:  """Logical model for Patient as used for the PLUGIN use-case NCR-item.
+Logical: NKRPatient
+Id: NKRPatient
+Title: "NKR Patient"
+Description:  """Logical model for Patient as used for the PLUGIN use-case NKR-item.
 Maturity Level: 0 Draft
 """
 
@@ -14,5 +11,5 @@ Maturity Level: 0 Draft
 * birthDate 0..1 date "Birth date of the patient"
 * deceasedDate 0..1 date "Death date of the patient"
 * address 1..* Address "nl.core.AddressInformation"
-
+* tumor 1..* NKRTumor "Tumor"
 
