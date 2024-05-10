@@ -39,13 +39,13 @@ jobs:
       - name: Install sushi (global)
         run: npm install -g fsh-sushi
 
-      - name: Get IG Publisher jar
-        run: curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o publisher.jar
-
       - name: Checkout IG files
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
+
+      - name: Get IG Publisher jar
+        run: curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o publisher.jar
 
       - name: Run the IG-Publisher
         run: java -jar publisher.jar -ig ig.ini
