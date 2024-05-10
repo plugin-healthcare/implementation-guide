@@ -1,5 +1,4 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to plugin.healthcare
+name: deploy to plugin.healthcare
 
 on:
   # Runs on pushes targeting the default branch
@@ -21,28 +20,43 @@ concurrency:
   group: "implementation-guide"
   cancel-in-progress: false
 
+env:
+  DEBIAN_FRONTEND: noninteractive
+
+
 jobs:
   # Single deploy job since we're just deploying
   deploy:
-    name: Run IG-publisher and publish to https://plugin.healthcare/fhir/ImplementationGuide/default/index.html.
+    name: Run IG-publisher and deploy
     runs-on: ubuntu-latest
     steps:
+      - name: Install GraphViz and Jekyll
+        # run: sudo apt update; sudo apt install graphviz jekyll
+        run: |
+          apt update
+          apt -y install graphviz jekyll nodejs npm
+
+      - name: Install sushi (global)
+        run: npm install -g fsh-sushi
+
       - name: Setup JDK version
         uses: actions/setup-java@v4.0.0
         with:
           java-version: 21
           distribution: temurin
 
-      - name: Install GraphViz and Jekyll
-        run: sudo apt update; sudo apt install graphviz jekyll
-
-      - name: Install sushi (global)
-        run: npm install -g fsh-sushi
-
       - name: Checkout IG files
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
+
+      - run: mkdir -p ~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.10.0-beta.1
+      - run: mkdir -p ~/.fhir/packages/nictiz.fhir.nl.r4.zib2020#0.10.0-beta.1
+      - name: Manually install nl-core dependency *with* snapshots
+        run: tar xvzf vendor/nictiz.fhir.nl.r4.nl-core-0.10.0-beta.1-snapshots.tgz -C ~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.10.0-beta.1
+
+      - name: Manually install zib202 dependency *with* snapshots
+        run: tar xvzf vendor/nictiz.fhir.nl.r4.zib2020-0.10.0-beta.1-snapshots.tgz -C ~/.fhir/packages/nictiz.fhir.nl.r4.zib2020#0.10.0-beta.1
 
       - name: Get IG Publisher jar
         run: curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o publisher.jar
