@@ -1,3 +1,5 @@
+page := index.html
+
 all: build open
 
 build: sushi ig
@@ -9,7 +11,7 @@ ig:
 	time ./_genonce.sh -no-sushi
 
 open:
-	open output/index.html
+	open output/$(page)
 
 
 deploy:

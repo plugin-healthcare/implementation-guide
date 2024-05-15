@@ -1,11 +1,5 @@
-// Profile: PluginPathologyReport
-// Parent: http://fhir.iknl.nl/fhir/iknl-palga-r4/StructureDefinition/palga-diagnostic-report
-// Id: plugin-DiagnosticReport
-// Description: "DiagnosticReport as used within PLUGIN for Pathology."
-
-
 Alias: $nl-core-TextResult = http://nictiz.nl/fhir/StructureDefinition/nl-core-TextResult
-Alias: $ = http://www.palga.nl/professionals/profession/protocollen
+// Alias: $ = http://www.palga.nl/professionals/profession/protocollen
 Alias: $palga-procedure-request = http://fhir.iknl.nl/fhir/iknl-palga-r4/StructureDefinition/palga-procedure-request
 Alias: $palga-patient = http://fhir.iknl.nl/fhir/iknl-palga-r4/StructureDefinition/palga-patient
 Alias: $palga-laboratory = http://fhir.iknl.nl/fhir/iknl-palga-r4/StructureDefinition/palga-laboratory
@@ -15,35 +9,36 @@ Alias: $palga-sample-observation = http://fhir.iknl.nl/fhir/iknl-palga-r4/Struct
 Profile: PluginPathologyReport
 Parent: $nl-core-TextResult
 Id: plugin-PathologyReport
+Title: "DiagnosticReport - Pathology"
 Description: """DiagnosticReport as used within PLUGIN for Pathology.
 
 This profile is based on the [PalgaDiagnosticReport](https://simplifier.net/iknl-palga-r4/palgadiagnosticreport)
 profile.
+
+**TODO:**
+
+- We should make sure category allows for explicit selection of PATHOLOGY reports. This might include cytology.
+
 """
 * ^status = #draft
-// * extension contains $ named protocol-version 0..1
 * basedOn ..1
-// * basedOn only Reference($palga-procedure-request)
-// * basedOn ^type.aggregation = #contained
 
-// TODO:
-//   We should make sure category allows for explicit selection of PATHOLOGY
-//   reports. This might include cytology.
-// * categegory 1..
+* category 1..
+* category.coding ^slicing.discriminator.type = #value
+* category.coding ^slicing.discriminator.path = "system"
+* category.coding ^slicing.rules = #open
+* category.coding ^slicing.description = "Code die pathologieverslagen onderscheid van OK-verslagen, radiologieverslagen, etc."
+* category.coding contains serviceCode 1..1
+* category.coding[serviceCode].system 1..1
+* category.coding[serviceCode].system = "http://terminology.hl7.org/CodeSystem/v2-0074"
+* category.coding[serviceCode].code 1..
+* category.coding[serviceCode].code from PluginPathologyReportCodes
 
 * code.text 1..
 * subject 1..
 * subject only Reference(Patient or nl-core-Patient or PluginPatient)
-// * subject only Reference($palga-patient)
-// * subject ^type.aggregation = #bundled
 * performer 1..1
-// * performer only Reference($palga-laboratory)
-// * performer ^type.aggregation = #bundled
 * specimen 1..1
-// * specimen only Reference($palga-specimen)
-// * specimen ^type.aggregation = #contained
-// * result only Reference($palga-sample-observation)
-// * result ^type.aggregation = #contained
 * conclusion 1..
 * conclusionCode 1..
 * conclusionCode.coding ^slicing.discriminator.type = #value
@@ -51,10 +46,23 @@ profile.
 * conclusionCode.coding ^slicing.rules = #open
 * conclusionCode.coding contains snomedCodes 1..1
 * conclusionCode.coding[snomedCodes].system 1..
-// * conclusionCode.coding[snomedCodes].system = "urn:oid:2.16.840.1.113883.2.4.3.23.5.2"
-* conclusionCode.coding[snomedCodes].system = $SNOMED
+
+// SNOMED_PALGA refers to a (very) old version of snomed.
+* conclusionCode.coding[snomedCodes].system = $SNOMED_PALGA
 * conclusionCode.coding[snomedCodes].code 1..
 * conclusionCode.coding[snomedCodes].display 1..
+
+// -----------------------------------------------------------------------------
+// ValueSet
+// -----------------------------------------------------------------------------
+ValueSet: PluginPathologyReportCodes
+Id: plugin-pa-report-codes-vs
+Title: "Pathology Report codes"
+Description: "Waardelijst met codes die een pathologieverslag identificeren."
+* $HL7_DX_SERVICE#CP "Cytopathology"
+* $HL7_DX_SERVICE#SP "Surgical Pathology"
+
+
 
 // Mapping: zib-textresult-v4.4-2020EN
 // Id: zib-textresult-v4.4-2020EN

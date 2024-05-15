@@ -43,7 +43,6 @@ waardenlijsten ontbreken nog.
 
 
 
-
 Logical: NKRTumorHNC
 Parent: NKRTumor
 Id: NKRTumorHNC
@@ -54,6 +53,5 @@ Maturity Level: 0 Draft
 """
 * topography 1..1
 * topography from HeadAndNeckCancerConditionVS
-
 * morfology from HeadAndNeckCancerMorphologyVS
 

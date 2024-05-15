@@ -18,4 +18,3 @@ Maturity Level: 0 Draft
 * urgency  0..1 code "Urgentie van de opname. Gecodeerd als 0: geen urgentie; 1: urgent" ""
 * source_of_admission 0..1 string "" ""
 * destination_after_discharge 0..1 string "" ""
-

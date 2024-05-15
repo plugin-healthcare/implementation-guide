@@ -4,6 +4,7 @@ Alias: $workflow-episodeOfCare = http://hl7.org/fhir/StructureDefinition/workflo
 Profile: PluginProcedure
 Parent: nl-core-Procedure-event
 Id: plugin-Procedure
+Title: "Procedure"
 Description: """Procedure as used within PLUGIN. Inherits from
 [nl-core-Procedure-event](https://simplifier.net/nictiz-r4-zib2020/nlcoreprocedureevent).
 
