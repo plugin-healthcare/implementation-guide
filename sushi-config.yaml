@@ -29,9 +29,9 @@ copyright: >-
 #
 dependencies:
   hl7.fhir.uv.ips: current
-  hl7.fhir.eu.extensions.r4: current
   nictiz.fhir.nl.r4.nl-core: 0.10.0-beta.1
   nictiz.fhir.nl.r4.zib2020: 0.10.0-beta.1
+  #hl7.fhir.eu.extensions.r4: current
   #hl7.fhir.extensions.r5: 4.0.1
 
 #   hl7.fhir.us.mcode:

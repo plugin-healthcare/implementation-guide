@@ -5,13 +5,20 @@ all: build open
 build: sushi ig
 
 sushi:
-	time sushi
+	sushi
 
 ig:
-	time ./_genonce.sh -no-sushi
+	./_genonce.sh -no-sushi
 
 open:
 	open output/$(page)
+
+install-dependencies:
+	mkdir -p ~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.10.0-beta.1
+	mkdir -p ~/.fhir/packages/nictiz.fhir.nl.r4.zib2020#0.10.0-beta.1
+	tar xvzf vendor/nictiz.fhir.nl.r4.nl-core-0.10.0-beta.1-snapshots.tgz -C ~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.10.0-beta.1
+	tar xvzf vendor/nictiz.fhir.nl.r4.zib2020-0.10.0-beta.1-snapshots.tgz -C ~/.fhir/packages/nictiz.fhir.nl.r4.zib2020#0.10.0-beta.1
+
 
 
 deploy:

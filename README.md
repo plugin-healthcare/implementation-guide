@@ -3,13 +3,30 @@
 ## Getting started (with contributions to this IG)
 
 ### Step 1 - Install required software
+**sushi**
 This project uses [FSH](https://hl7.org/fhir/uv/shorthand/) and [sushi](https://fshschool.org/docs/sushi/). Therefore, it requires [Node.js](https://nodejs.org/en). The [IG Publisher](https://confluence.hl7.org/display/FHIR/IG+Publisher+Documentation) additionally requires Java to be present on the system.
 
-Installing sushi is detailed [here](https://fshschool.org/docs/sushi/installation/). The following command might be sufficient:
+Installing sushi is detailed [here](https://fshschool.org/docs/sushi/installation/). The following command might be sufficient if you're already working with [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro):
 
 ```bash
 npm install fsh-sushi
 ```
+**IG Publisher**
+The [IG Publisher](https://confluence.hl7.org/display/FHIR/IG+Publisher+Documentation) requires Java and [Jekyll](https://jekyllrb.com/docs/installation/ubuntu/) to be installed.
+
+```
+# Generally a good idea
+sudo apt update
+
+# Java
+sudo apt install openjdk-17-jre
+
+# Jekyll
+sudo apt-get install graphviz jekyll
+```
+
+> [!TIP]
+> If you're using `zsh`, be sure to change to above files accordingly!
 
 ### Step 2 - Clone the repo, and initialize publishers.
 
