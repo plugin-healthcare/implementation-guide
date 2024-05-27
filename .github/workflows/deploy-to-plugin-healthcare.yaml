@@ -1,49 +1,35 @@
-name: deploy to plugin.healthcare
-
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["master"]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches:
+      - main
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "implementation-guide"
-  cancel-in-progress: false
-
-env:
-  DEBIAN_FRONTEND: noninteractive
-
-
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    name: Run IG-publisher and deploy
+  Run-IG-Builder:
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    name: Run IG builder on main and publish on GitHub Pages
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Install GraphViz and Jekyll
-        # run: sudo apt update; sudo apt install -y graphviz jekyll
-        run: |
-          sudo apt update
-          sudo apt -y install graphviz jekyll nodejs npm
-
-      - name: Install sushi (global)
-        run: npm install -g fsh-sushi
-
       - name: Setup JDK version
         uses: actions/setup-java@v4.0.0
         with:
           java-version: 21
           distribution: temurin
+
+      - name: Install GraphViz and Jekyll
+        run: sudo apt update; sudo apt install graphviz jekyll
+
+      - name: Install sushi
+        run: npm install fsh-sushi
+
+      - name: Install sushi (global)
+        run: npm install -g fsh-sushi
 
       - name: Checkout IG files
         uses: actions/checkout@v4
@@ -61,15 +47,19 @@ jobs:
       - name: Get IG Publisher jar
         run: curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o publisher.jar
 
-      - name: Run the IG-Publisher
-        run: java -Xms2048m -Xmx8196m -jar publisher.jar -ig ig.ini
+      - name: Run the IG Builder
+        run: java -jar publisher.jar -ig ig.ini
 
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
+      - run: ls -la
+      
+      - name: Copy the package feed
+        run: cp package-feed/package-feed.xml output
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+          name: 'github-pages'
+          path: 'output'
 
-      - name: Deploy with ssh
-        # run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/
-        run: scp -r output/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:public_html/fhir/
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
