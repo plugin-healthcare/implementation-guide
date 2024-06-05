@@ -16,8 +16,7 @@ This profile is based on the [PalgaDiagnosticReport](https://simplifier.net/iknl
 profile.
 
 **TODO:**
-
-- We should make sure category allows for explicit selection of PATHOLOGY reports. This might include cytology.
+- Voorstel voor selectie PA-verslagen via codes `CP` en `SP` uit http://terminology.hl7.org/CodeSystem/v2-0074.
 
 """
 * ^status = #draft

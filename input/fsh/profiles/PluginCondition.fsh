@@ -1,5 +1,5 @@
 Profile: PluginCondition
-Parent: Condition
+Parent: nl-core-Problem
 Id: plugin-condition
 Title: "Condition"
 Description: """Condition as used within PLUGIN.

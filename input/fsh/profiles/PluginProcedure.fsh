@@ -16,6 +16,6 @@ Description: """Procedure as used within PLUGIN. Inherits from
 * code 1..
 * subject only Reference(Patient or nl-core-Patient or PluginPatient)
 * reasonReference 1..
-* reasonReference only Reference(Condition or PluginCondition)
+// * reasonReference only Reference(Condition or PluginCondition)
 * bodySite.extension[laterality] ^sliceName = "laterality"
 * bodySite.extension[laterality] ^mustSupport = true

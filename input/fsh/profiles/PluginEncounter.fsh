@@ -9,7 +9,7 @@ Een contact kan zowel klinisch ((dag)opname) als poliklinisch zijn.
 ### Vaststellen type bezoek
 Het attribuut `class` kan gebruikt worden voor het type bezoek. Vertaling naar/afstemming met de use-case AIOC moet nog plaatsvinden. Tevens is de betekenis van de waarde `ACUTE` niet geheel duidelijk.
 
-Voorstel gebruik van de `class` [ValueSet](http://terminology.hl7.org/ValueSet/v3-ActEncounterCode):
+Voorstel voor interpretatie van de `class` [ValueSet](http://terminology.hl7.org/ValueSet/v3-ActEncounterCode):
  - AMB: poliklinisch
  - EMER: SEH
  - ACUTE: IC?
