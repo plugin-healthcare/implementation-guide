@@ -8,7 +8,7 @@ sushi:
 	sushi
 
 ig:
-	./_genonce.sh -no-sushi
+	./_genonce.sh -no-sushi -fhir-settings fhir-settings.json
 
 open:
 	open output/$(page)
