@@ -44,6 +44,21 @@ Hierbij zijn twee punten van aandacht:
 
 Naast de topografie, zou ook gekeken kunnen worden of morfologie en gedrag in het EPD beschikbaar zijn (zie ook onderstaande tabellen). Voor een subset aan codes wordt in de NKR-handleiding een aanvullende beschrijving gegeven (Tabel 2). Morfologie wordt vastgelegd middels ICD-o-3. Voor HHT wordt een beperkte set gebruikt; deze is vastgelegd in de ValueSet [Head and Neck Cancer Morphology](ValueSet-hnc-morphology-vs.html).
 
+> **Tussentijdse update**
+>
+> Een vergelijking van de selectie op bovenstaande codes met de data die reeds in de NKR beschikaar is (incidentiejaren 2020-2022) levert de volgende resultaten:
+>
+> |                       | In NKR    | Niet in NKR |
+> |-----------------------|-----------|-------------|
+> | **In selectie RUMC**      | 1307 (TP) | 516 (FP)    |
+> | **Niet in selectie RUMC** | 178 (FN)  | N/A (TN)    |
+>
+> Ad FN: in veel gevallen verklaard doordat de incidentiedatum in de NKR buiten de periode 2020-2022 valt.
+> Ad FP:
+>   1. 284 van de 516 patiënten zijn _wel_ bekend in de NKR, maar met een andere tumor of datum.
+>   2. De  232 patiënten die _niet_ bekend zijn in de NKR, hebben wel een passende ICD-10 code. Het is (nog) niet helemaal duidelijk waarom deze patiënten
+
+
 #### Vaststellen van de incidentiedatum
 In EPDs wordt samen met de diagnose veelal een aantal datums vastgelegd:
 
@@ -80,17 +95,14 @@ Nader te bepalen.
 #### Vaststellen van TNM-stadium
 Nader te bepalen.
 
+> Melle (26-06-2024): Op basis van de PA-verslagen die als voorbeeld zijn verstrekt, lijkt TNM-stadium na excisie niet in het verslag genoemd te worden. In Epic wordt het stadium vastgelegd in specifieke module. Zijn deze gegevens te vatten in/uit te lezen via een QuestionnaireResponse?
+
 
 ### Benodigde resources
-Op basis van het bovenstaande, lijkt het algoritme voor het make van de patiëntselectie minimaal toegang nodig te hebben tot de volgende resources:
+Op basis van het bovenstaande, lijkt het algoritme voor het maken van de patiëntselectie minimaal toegang nodig te hebben tot de volgende resources:
 
-* [Patient](https://hl7.org/fhir/R4/patient.html)
-* [Condition](https://hl7.org/fhir/R4/condition.html)
-
-<!--
-* [Encounter](https://hl7.org/fhir/R4/enounter.html)
-* [DiagnosticReport](https://hl7.org/fhir/R4/diagnosticreport.html)
-    * [Attachment](https://hl7.org/fhir/R4/attachment.html) met het volledige PA-verslag
-    * Optioneel: [Observation](https://hl7.org/fhir/R4/observation.html)
--->
+* [Patient](StructureDefinition-plugin-patient.html)
+* [Condition](StructureDefinition-plugin-condition.html)
+* [DiagnosticReport](StructureDefinition-plugin-pathologyreport.html) (PA-verslag)
+* [Encounter](StructureDefinition-plugin-encounter.html)
 

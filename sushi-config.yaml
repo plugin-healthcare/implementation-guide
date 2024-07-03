@@ -124,7 +124,9 @@ menu:
     Aanlevering NKR: use-case-NKR-item.html
     Palliatieve Zorg: use-case-palliative-care.html
   About: about.html
-  Artifacts: artifacts.html
+  All Artifacts: artifacts.html
+  Logische modellen: artifacts.html#structures-logical-models
+  Profielen: artifacts.html#structures-resource-profiles
   Support:
     FHIR Spec: new-tab https://hl7.org/fhir/index.html
     FHIR IPS: new-tab https://hl7.org/fhir/uv/ips/index.html
