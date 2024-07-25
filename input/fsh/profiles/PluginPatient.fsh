@@ -23,6 +23,7 @@ Inherits from [nl-core-Patient](https://simplifier.net/nictiz-r4-zib2020/nlcorep
 * identifier[patientnummer] ^short = "Patientnummer zoals gebruikt in het EPD"
 * identifier[patientnummer] ^definition = "Patientnummer zoals gebruikt in het EPD"
 * identifier[patientnummer] ^patternIdentifier.type = $v2-0203#MR
+* identifier[patientnummer].type 1..
 * identifier[patientnummer].value 1..
 * identifier[patientnummer].value ^short = "Patientnummer"
 * identifier[patientnummer].value ^definition = "Patientnummer"
