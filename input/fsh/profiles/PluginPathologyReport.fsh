@@ -12,11 +12,46 @@ Id: plugin-pathologyreport
 Title: "DiagnosticReport - Pathology"
 Description: """DiagnosticReport as used within PLUGIN for Pathology.
 
+<!--
 This profile is based on the [PalgaDiagnosticReport](https://simplifier.net/iknl-palga-r4/palgadiagnosticreport)
 profile.
+-->
+
+**Vergelijking met Epic (@RUMC)**
+
+__`DiagnosticReport.category`__
+
+Epic stuurt 2 codes:
+- Pathologie|urn:oid:1.2.840.114350.1.13.357.2.7.10.798268.30
+- LAB|https://terminology.hl7.org/6.0.2/CodeSystem-v2-0074.html
+
+De code `Pathologie` maakt gebruik van een codestelsel dat specifiek is voor Epic. Bij voorkeur wordt dit veranderd in `PAT` of `CP`.
+
+De code `LAB` lijkt meer een overkoepelende term voor laboratoria.
+
+__`DiagnosticReport.code`__
+
+Epic stuurt 2 codes:
+- 67307|urn:oid:1.2.840.114350.1.13.357.2.7.2.696580
+- HISTOLOGIE|urn:oid:1.2.840.114350.1.13.357.2.7.5.737384.83
+
+Beide codes maken gebruik van een Epic-specifiek OID. De (internationale) FHIR IG benoemt de voorkeur voor LOINC. In Nederland worden (waarschijnlijk) PALGA-codes gebruikt [PALGA thesaurus](https://www.palga.nl/voor-pathologen/palga-on-line-thesaurus).
+
+__`DiagnosticReport.result`__
+
+`result` bevat momenteel 4 componenten (referenties naar Observations):
+- Samenvatting
+- Conclusie
+- Macroscopie
+- Microscopie
+
+Deze componenten zijn (nog) niet gecodeerd.
 
 **TODO:**
 - Voorstel voor selectie PA-verslagen via codes `CP` en `SP` uit http://terminology.hl7.org/CodeSystem/v2-0074.
+
+
+
 
 """
 * ^status = #draft
@@ -59,7 +94,10 @@ Id: plugin-pa-report-codes-vs
 Title: "Pathology Report codes"
 Description: "Waardelijst met codes die een pathologieverslag identificeren."
 * $HL7_DX_SERVICE#CP "Cytopathology"
-* $HL7_DX_SERVICE#SP "Surgical Pathology"
+* $HL7_DX_SERVICE#SP "Pathology (gross & histopath, not surgical"
+
+// PAT is deprecated in HL7 v2.9
+* $HL7_DX_SERVICE#PAT "Surgical Pathology"
 
 
 

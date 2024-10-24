@@ -1,11 +1,10 @@
 // -------------------------------------------------------------------------------
 //  Resource Profile
 // -------------------------------------------------------------------------------
-Profile: PluginPractitionerRole
-Parent: PractitionerRole
-Id: plugin-practitionerrole
-Title: "PractitionerRole"
+Profile: PluginPractitionerWithSpecialty
+Parent: nl-core-HealthProfessional-PractitionerRole
+Id: plugin-practitionerrole-specialty
+Title: "PractitionerSpecialty"
 Description: """Describes the PractitionerRole resource as used by the Dutch PLUGIN project.
 """
-* specialty 1..
-* specialty.coding
+* specialty[specialty] MS

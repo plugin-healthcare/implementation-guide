@@ -12,11 +12,6 @@ Description: """Describes the Patient resource as used by the Dutch PLUGIN proje
 Inherits from [nl-core-Patient](https://simplifier.net/nictiz-r4-zib2020/nlcorepatient).
 """
 
-// Hoe is active gedefinieerd? Gebruik in IPS?
-// Zou handig zijn om tijdelijke patiënten te filteren.
-// * active 1..1 MS
-// * active = true
-
 * identifier 1..* MS
 * identifier contains
     patientnummer 1..1 MS
@@ -28,9 +23,19 @@ Inherits from [nl-core-Patient](https://simplifier.net/nictiz-r4-zib2020/nlcorep
 * identifier[patientnummer].value ^short = "Patientnummer"
 * identifier[patientnummer].value ^definition = "Patientnummer"
 
+// Hoe is active gedefinieerd? Gebruik in IPS?
+// Zou handig zijn om tijdelijke patiënten te filteren.
+// * active 1..1 MS
+// * active = true
+
 * name MS
+* name[nameInformation] MS
+* name[nameInformation].family MS
+
 * gender 1..1 MS
 * birthDate 1..1 MS
 * deceased[x] 0..1 MS
 * deceased[x] only dateTime
-* address MS
+
+* address.use MS
+* address.postalCode MS

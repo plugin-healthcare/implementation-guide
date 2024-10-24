@@ -4,3 +4,6 @@ output/*
 input-cache/*
 temp/*
 template/*
+.secrets
+.vscode/*
+src/*
