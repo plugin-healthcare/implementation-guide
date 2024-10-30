@@ -103,6 +103,6 @@ Op basis van het bovenstaande, lijkt het algoritme voor het maken van de patiën
 
 * [Patient](StructureDefinition-plugin-patient.html)
 * [Condition](StructureDefinition-plugin-condition.html)
-* [DiagnosticReport](StructureDefinition-plugin-pathologyreport.html) (PA-verslag)
+* [DiagnosticReport](StructureDefinition-plugin-PathologyReport.html) (PA-verslag)
 * [Encounter](StructureDefinition-plugin-encounter.html)
 
