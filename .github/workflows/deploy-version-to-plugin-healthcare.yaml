@@ -62,7 +62,7 @@ jobs:
 
   # Build job
   build:
-    name: Run IG-publisher
+    name: Run IG-publisher and deploy new version to https://plugin.healthcare/fhir
     needs: version
     runs-on: ubuntu-latest
     steps:
@@ -94,16 +94,6 @@ jobs:
 
       - name: Run the IG-Publisher
         run: java -Xms2048m -Xmx8196m -jar publisher.jar -ig ig.ini
-
-  # Deploy job
-  deploy:
-    name: Deploy new version to https://plugin.healthcare/fhir
-    needs: [version, build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install rsync
-        run: |
-          sudo apt -y install rsync
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
