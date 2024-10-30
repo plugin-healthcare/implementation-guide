@@ -103,10 +103,16 @@ jobs:
 
       - name: Deploy 'latest' with ssh
         if: ${{ needs.version.outputs.version == 'latest' }}
+        env:
+          version: ${{ needs.version.outputs.version }}
+
         # run: scp -r output/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:public_html/fhir/
         run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/
 
       - name: Deploy 'version' with ssh
         if: ${{ needs.version.outputs.version != 'latest' }}
+        env:
+          version: ${{ needs.version.outputs.version }}
+
         # run: scp -r output/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:public_html/fhir/${version}
         run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/${version}
