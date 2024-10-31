@@ -5,6 +5,7 @@ on:
   push:
     tags:
       - "version/*.*.*"
+      - "version/latest"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -47,15 +48,6 @@ jobs:
         run: |
           TAG=${GITHUB_REF#refs/*/}
           VERSION=${TAG#version/*}
-          PARTS=(${VERSION//\./ })
-          MAJOR=${PARTS[0]}
-          echo "version=${VERSION}" >> $GITHUB_OUTPUT
-          echo "major=${MAJOR}" >> $GITHUB_OUTPUT
-          echo "minor=${PARTS[1]}" >> $GITHUB_OUTPUT
-          PARTS2=( $(grep -Eo '[[:digit:]]+|[^[:digit:]]+' <<< ${PARTS[2]} ) )
-          echo "patch=${PARTS2[0]}" >> $GITHUB_OUTPUT
-          echo "stage=${PARTS2[1]}" >> $GITHUB_OUTPUT
-          echo "build=${PARTS2[2]}" >> $GITHUB_OUTPUT
 
     outputs:
       version: ${{ steps.split.outputs.version }}
@@ -105,14 +97,10 @@ jobs:
         if: ${{ needs.version.outputs.version == 'latest' }}
         env:
           version: ${{ needs.version.outputs.version }}
-
-        # run: scp -r output/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:public_html/fhir/
         run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/
 
       - name: Deploy 'version' with ssh
         if: ${{ needs.version.outputs.version != 'latest' }}
         env:
           version: ${{ needs.version.outputs.version }}
-
-        # run: scp -r output/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:public_html/fhir/${version}
         run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/${version}
