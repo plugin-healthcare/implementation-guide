@@ -30,7 +30,7 @@ copyright: >-
 dependencies:
   hl7.fhir.uv.ips: current
   nictiz.fhir.nl.r4.nl-core: 0.11.0-beta.1
-  nictiz.fhir.nl.r4.zib2020: 0.11.0-beta.1
+  nictiz.fhir.nl.r4.zib2020: 0.10.0-beta.1
   #hl7.fhir.eu.extensions.r4: current
   #hl7.fhir.extensions.r5: 4.0.1
 
@@ -123,6 +123,7 @@ menu:
     Overzicht: use-cases.html
     Aanlevering NKR: use-case-NKR-item.html
     Palliatieve Zorg: use-case-palliative-care.html
+    EzaPredictive: use-case-EzaPredictive.html
   About: about.html
   All Artifacts: artifacts.html
   Logische modellen: artifacts.html#structures-logical-models
