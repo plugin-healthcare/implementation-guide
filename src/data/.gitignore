@@ -1,0 +1,10 @@
+# Ignore everything in this directory
+*
+
+# Except these directories
+!thesaurus-code/
+!thesaurus-specialism/
+
+# Except these files
+!.gitignore
+README.md

@@ -2,7 +2,7 @@
 //  Logical Model
 // -------------------------------------------------------------------------------
 Logical: PCPatient
-Parent: NCRPatient
+Parent: NKRPatient
 Id: PCPatient
 Title: "PC Patient"
 Description:  """Logical model for Patient as used for the PLUGIN use-case Palliative Care.

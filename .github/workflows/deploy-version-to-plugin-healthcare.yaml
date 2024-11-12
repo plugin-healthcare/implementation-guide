@@ -1,0 +1,106 @@
+name: deploy tagged version (release) to plugin.healthcare
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    tags:
+      - "version/*.*.*"
+      - "version/latest"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "implementation-guide"
+  cancel-in-progress: false
+
+env:
+  DEBIAN_FRONTEND: noninteractive
+
+
+jobs:
+  # Check that the tag that is being used starts with `version/`. If
+  # this is not the case, this tag is not intended for release.
+  version:
+    name: Verify and extract version tag
+    runs-on: ubuntu-latest
+    steps:
+      # - id: echo
+      #   name: Echo to stdout
+      #   run: |
+      #     echo "GITHUB_REF=${GITHUB_REF}" >> $GITHUB_OUTPUT
+      #     echo "github.ref=${{github.ref}}" >> $GITHUB_OUTPUT
+
+      - id: verify
+        if: startsWith(github.ref, 'refs/tags/version') != true
+        uses: andymckay/cancel-action@0.2
+
+      - id: split
+        name: Extract version string from tag
+        run: |
+          TAG=${GITHUB_REF#refs/*/}
+          VERSION=${TAG#version/*}
+
+    outputs:
+      version: ${{ steps.split.outputs.version }}
+
+  # Build job
+  build:
+    name: Run IG-publisher and deploy new version to https://plugin.healthcare/fhir
+    needs: version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install GraphViz and Jekyll
+        # run: sudo apt update; sudo apt install -y graphviz jekyll
+        run: |
+          sudo apt update
+          sudo apt -y install graphviz jekyll nodejs npm
+
+      - name: Install sushi (global)
+        run: npm install -g fsh-sushi
+
+      - name: Setup JDK version
+        uses: actions/setup-java@v4.0.0
+        with:
+          java-version: 21
+          distribution: temurin
+
+      - name: Checkout IG files
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - run: make install-dependencies
+        name: Install required FHIR packages.
+
+      - name: Get IG Publisher jar
+        run: curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o publisher.jar
+
+      - name: Run the IG-Publisher
+        run: java -Xms2048m -Xmx8196m -jar publisher.jar -ig ig.ini
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+
+      - name: Deploy 'latest' with ssh
+        if: ${{ needs.version.outputs.version == 'latest' }}
+        env:
+          version: ${{ needs.version.outputs.version }}
+        run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/
+
+      - name: Deploy 'version' with ssh
+        if: ${{ needs.version.outputs.version != 'latest' }}
+        env:
+          version: ${{ needs.version.outputs.version }}
+        run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/${version}

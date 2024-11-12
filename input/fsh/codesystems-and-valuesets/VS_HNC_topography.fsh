@@ -1,7 +1,7 @@
 ValueSet: HeadAndNeckCancerConditionVS
 Id: hnc-vs
 Title: "Head and Neck Cancer Conditions"
-Description: "Head and Neck Cancer Conditions"
+Description: "Head and Neck Cancer Conditions/Topography"
 
 * $ICD10NL#C00 "Lip"
 * $ICD10NL#C00.0 "Lip Bovenlip lippenrood"

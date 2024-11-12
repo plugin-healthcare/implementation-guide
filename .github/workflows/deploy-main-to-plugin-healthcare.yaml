@@ -1,0 +1,77 @@
+name: deploy main to plugin.healthcare (ci-build)
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["master", "main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "implementation-guide"
+  cancel-in-progress: false
+
+env:
+  DEBIAN_FRONTEND: noninteractive
+
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    name: Run IG-publisher and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install GraphViz and Jekyll
+        # run: sudo apt update; sudo apt install -y graphviz jekyll
+        run: |
+          sudo apt update
+          sudo apt -y install graphviz jekyll nodejs npm rsync
+
+      - name: Install sushi (global)
+        run: npm install -g fsh-sushi
+
+      - name: Setup JDK version
+        uses: actions/setup-java@v4.0.0
+        with:
+          java-version: 21
+          distribution: temurin
+
+      - name: Checkout IG files
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      # - run: mkdir -p ~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.10.0-beta.1
+      # - run: mkdir -p ~/.fhir/packages/nictiz.fhir.nl.r4.zib2020#0.10.0-beta.1
+      # - name: Manually install nl-core dependency *with* snapshots
+      #   run: tar xvzf vendor/nictiz.fhir.nl.r4.nl-core-0.10.0-beta.1-snapshots.tgz -C ~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.10.0-beta.1
+      # - name: Manually install zib202 dependency *with* snapshots
+      #   run: tar xvzf vendor/nictiz.fhir.nl.r4.zib2020-0.10.0-beta.1-snapshots.tgz -C ~/.fhir/packages/nictiz.fhir.nl.r4.zib2020#0.10.0-beta.1
+
+      - run: make install-dependencies
+        name: Install required FHIR packages.
+
+      - name: Get IG Publisher jar
+        run: curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o publisher.jar
+
+      - name: Run the IG-Publisher
+        run: java -Xms2048m -Xmx8196m -jar publisher.jar -ig ig.ini
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+
+      - name: Deploy with ssh
+        # run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/
+        run: scp -r output/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:public_html/fhir/ci-build

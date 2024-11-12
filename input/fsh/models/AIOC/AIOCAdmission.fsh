@@ -15,7 +15,6 @@ Maturity Level: 0 Draft
 * discharge_date 0..1 date "Datum van ontslag." ""
 * discharge_time 0..1 time "Tijd van ontslag." ""
 * age_at_admission 1..1 integer "Leeftijd bij opname" ""
-* urgency  0..1 integer "Urgentie van de opname. Gecodeerd als 0: geen urgentie; 1: urgent" ""
+* urgency  0..1 code "Urgentie van de opname. Gecodeerd als 0: geen urgentie; 1: urgent" ""
 * source_of_admission 0..1 string "" ""
 * destination_after_discharge 0..1 string "" ""
-
