@@ -1,9 +1,9 @@
-name: deploy to plugin.healthcare
+name: deploy main to plugin.healthcare (ci-build)
 
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["master"]
+    branches: ["master", "main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -34,7 +34,7 @@ jobs:
         # run: sudo apt update; sudo apt install -y graphviz jekyll
         run: |
           sudo apt update
-          sudo apt -y install graphviz jekyll nodejs npm
+          sudo apt -y install graphviz jekyll nodejs npm rsync
 
       - name: Install sushi (global)
         run: npm install -g fsh-sushi
@@ -74,4 +74,4 @@ jobs:
 
       - name: Deploy with ssh
         # run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/
-        run: scp -r output/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:public_html/fhir/
+        run: scp -r output/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:public_html/fhir/ci-build
