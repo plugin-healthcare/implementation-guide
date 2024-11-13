@@ -1,3 +1,4 @@
+node_modules/*
 _ig-template-fhir.unused/*
 fsh-generated/*
 output/*
