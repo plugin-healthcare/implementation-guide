@@ -23,3 +23,8 @@ Description: """Procedure as used within PLUGIN. Inherits from
 // * reasonReference only Reference(Condition or PluginCondition)
 * bodySite.extension[laterality] ^sliceName = "laterality"
 * bodySite.extension[laterality] ^mustSupport = true
+
+// telt ook voor CAG/PCI, OK en scopie denk ik
+* performer 1..1
+* report.TextResult 0..*
+* report.textResult.effective[x].effectiveDateTime 1..1

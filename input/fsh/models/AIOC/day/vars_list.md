@@ -10,11 +10,14 @@
 - [x] discharge_time            -> PluginEncounter (period.start)
 - [x] age                       -> PluginPatient (birthDate) (needs extra validation step) 
 - [x] gender                    -> PluginPatient (gender)
-- [ ] specialty_code
-- [ ] dbc diagnosis code
-- [ ] dbc specialty code
-- [ ] ICD-10 subtraject code
+- [ ] specialty_code            
 - [ ] ICD-10 diagnosis code     -> PluginCondition (code.coding[icd10].code)
+
+### pluginDBC
+- [ ] dbc diagnosis code        -> geen idee geprobeerd in PluginDBC (diagnosis.coding[dbc].code)
+- [ ] dbc specialty code        -> geen idee geprobeerd in PluginDBC (diagnosis.coding[dbc].code)
+- [ ] ICD-10 subtraject code    -> geen idee geprobeerd in PluginDBC (diagnosis.coding[icd10].code)
+- [ ] episode of care specialty -> PluginDBC (diagnosis.code)
 
 ### Opmerkingen
 - filter nodig op serviceType, niet duidelijk welke service type [ServiceTypes](https://simplifier.net/packages/nictiz.fhir.nl.r4.zib2020/0.11.0-beta.1/files/2628076)
@@ -31,11 +34,11 @@
 
 ### Operatieverslag
 
-- [ ] patient_id
-- [ ] publication_date
-- [ ] publication_specialty
-- [ ] document_type
-- [ ] text/anonymized text
+- [x] patient_id
+- [x] publication_date
+- [x] publication_specialty
+- [x] document_type
+- [x] text/anonymized text
 
 ### Ontslagbrief/Klinische brief
 
@@ -47,14 +50,15 @@
 
 ### Polikliniek verslag
 
-- [ ] patient_id
-- [ ] publication_date
-- [ ] publication_specialty
-- [ ] document_type
-- [ ] text/anonymized text
+- [x] patient_id
+- [x] publication_date
+- [x] publication_specialty    -> PluginPathologyReport (performer.)
+- [x] document_type            -> PluginPathologyReport (category.coding or resource is always pathology)
+- [x] text/anonymized text     -> PluginPathologyReport (result (all 4 components to be merged))
 
 ### Scopie verslag
 
+PluginProcedure + report.TextResult
 - [ ] patient_id
 - [ ] publication_date
 - [ ] publication_specialty
@@ -62,20 +66,18 @@
 - [ ] text/anonymized text
 
 ### Pathologie verslag
-
+PluginProcedure + report.TextResult
 - [x] patient_id                -> PluginPathologyReport (subject.patientnummer)
-- [ ] publication_date          -> 
-- [ ] publication_specialty
-- [ ] document_type
-- [ ] text/anonymized text      -> PluginPathologyReport (conclusion)??
+- [x] publication_date          -> 
+- [x] publication_specialty
+- [x] document_type
+- [x] text/anonymized text      -> PluginPathologyReport (conclusion)??
 
-### PCI/CAG verslag
-
+### CAG/PCI verslag
+PluginProcedure + report.TextResult
 - [ ] patient_id
 - [ ] publication_date
 - [ ] publication_specialty
 - [ ] document_type
 - [ ] text/anonymized text
-
-
 
