@@ -25,9 +25,6 @@ sudo apt install openjdk-17-jre
 sudo apt-get install graphviz jekyll
 ```
 
-> [!TIP]
-> If you're using `zsh`, be sure to change to above files accordingly!
-
 ### Step 2 - Clone the repo, and initialize publishers.
 
 ```bash
