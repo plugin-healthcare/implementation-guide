@@ -45,6 +45,10 @@ Alternatieven?
 * subject 1..1 MS
 * subject only Reference(Patient or nl-core-Patient)
 
+// add start and end datetime of encounter (only start is mandatory)
+* period.start 1..1 MS
+* period.end 1..1 MS
+
 // healthProfessional is defined in nl-core-Encounter
 * participant[healthProfessional] MS
 * participant[healthProfessional].type MS
