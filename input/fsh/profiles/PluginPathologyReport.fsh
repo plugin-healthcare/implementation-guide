@@ -73,6 +73,7 @@ Deze componenten zijn (nog) niet gecodeerd.
 * subject only Reference(Patient or nl-core-Patient or PluginPatient)
 * performer 1..1
 * specimen 1..1
+* result 4..4
 * conclusion 1..
 * conclusionCode 1..
 * conclusionCode.coding ^slicing.discriminator.type = #value
