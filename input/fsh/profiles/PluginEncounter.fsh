@@ -20,6 +20,7 @@ In release v6 (2023) van de ZiBs ([ContactTypeCodelijst](https://zibs.nl/wiki/Co
 
 ### Oorspronkelijke locatie patiënt
 Voor AIOC is het nodig te weten via welke route een patient in het ziekenhuis terecht kwam. De ValueSet hiervoor moet nog aangemaakt/gekoppeld worden.
+NMvdL: Deze heet ook wel HerkomstCodelijst
 
 ### Ontslagbestemming patiënt
 Voor AIOC is het nodig te weten waar de patient na ontslag naartoe gaat. De ValueSet hiervoor moet nog aangemaakt/gekoppeld worden. [Admit source](http://hl7.org/fhir/R4/valueset-encounter-admit-source.html), de 'preferred' value set, lijkt hiervoor geschikt?
