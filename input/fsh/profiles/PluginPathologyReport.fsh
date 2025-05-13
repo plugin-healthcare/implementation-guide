@@ -8,7 +8,7 @@ Alias: $palga-sample-observation = http://fhir.iknl.nl/fhir/iknl-palga-r4/Struct
 
 Profile: PluginPathologyReport
 Parent: $nl-core-TextResult
-Id: plugin-pathologyreport
+Id: plugin-PathologyReport
 Title: "DiagnosticReport - Pathology"
 Description: """DiagnosticReport as used within PLUGIN for Pathology.
 
