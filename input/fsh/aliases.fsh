@@ -13,3 +13,5 @@ Alias: $DHD_DX_TH = https://plugin.healthcare/fhir/CodeSystem/dhd-dx-thesaurus
 
 // diagnosticServiceSectionId
 Alias: $HL7_DX_SERVICE = http://terminology.hl7.org/CodeSystem/v2-0074
+
+Alias: $ZibProcedureevent = http://nictiz.nl/fhir/StructureDefinition/zib-Procedure-event

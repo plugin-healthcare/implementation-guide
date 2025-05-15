@@ -11,7 +11,12 @@ Description: "DBC as used within PLUGIN."
 * period.end 0..1
 * patient 1..1
 // add Practitioner for specialty code
-* practitioner.PractionerRole.specialty 1..1
-// add dbc specialty diagnosis and icd10 code. HOW?
-* diagnosis.coding[icd10].code 1..1
-* diagnosis.coding[dbc].code 1..1
+
+// // Koppel practitioner met specialty via careTeam
+// * careTeam 1..1
+// * careTeam.member 1..1
+// * careTeam.member only Reference(PluginPractitionerWithSpecialty)
+
+// // add dbc specialty diagnosis and icd10 code. HOW?
+// * diagnosis.coding[icd10].code 1..1
+// * diagnosis.coding[dbc].code 1..1

@@ -7,4 +7,4 @@ Id: plugin-practitionerrole-specialty
 Title: "PractitionerSpecialty"
 Description: """Describes the PractitionerRole resource as used by the Dutch PLUGIN project.
 """
-* specialty[specialty] MS
+* specialty 1..1 MS

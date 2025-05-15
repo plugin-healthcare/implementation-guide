@@ -1,9 +1,9 @@
 // -------------------------------------------------------------------------------
 //  Logical Model
 // -------------------------------------------------------------------------------
-Logical: AIOCAdmission
-Id: AIOCAdmission
-Title: "AIOC opname"
+Logical: AIOCDayAdmission
+Id: AIOCDayAdmission
+Title: "AIOC dagopname"
 Description:  """Logisch model voor de tabel `opname` zoals gebruikt binnen de use-case AIOC.
 Maturity Level: 0 Draft
 """

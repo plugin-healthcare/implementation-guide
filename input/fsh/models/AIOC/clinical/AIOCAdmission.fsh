@@ -26,9 +26,9 @@ Maturity Level: 0 Draft
 // -------------------------------------------------------------------------------
 CodeSystem: AIOCAgeDimensionCS
 Id: AIOCAgeDimensionCS
-status: #draft
 Title: "AIOC Age Dimension Code System"
 Description: "A code system for age dimension"
+* ^status = #draft
 * #1 "Jaren" "Age measured in years."
 * #2 "Maanden" "Age measured in months."
 * #3 "Dagen" "Age measured in days."
@@ -38,9 +38,9 @@ Description: "A code system for age dimension"
 // -------------------------------------------------------------------------------
 CodeSystem: AIOCGenderCS
 Id: AIOCGender
-status: #draft
 Title: "AIOC Gender Dimension Code System"
 Description: "A code system for gender dimension of the patient"
+* ^status = #draft
 * #0 "Onbekend" "Gender of the patient is unknown"
 * #1 "Mannelijk" "Gender of the patient is male"
 * #2 "Vrouwelijk" "Gender of the patient is female"
@@ -50,9 +50,9 @@ Description: "A code system for gender dimension of the patient"
 // -------------------------------------------------------------------------------
 CodeSystem: AIOCUrgencyCS
 Id: AIOCUrgencyCS
-status: #draft
 Title: "AIOC Urgency Code System"
 Description: "A code system for urgency of the admission"
+* ^status = #draft
 * #0 "Geen urgentie" "No urgency"
 * #1 "Urgent" "Urgent"
 // -------------------------------------------------------------------------------
@@ -60,9 +60,9 @@ Description: "A code system for urgency of the admission"
 // -------------------------------------------------------------------------------
 CodeSystem: AIOCSourceOfAdmissionCS
 Id: AIOCSourceOfAdmissionCS
-status: #draft
 Title: "AIOC Source of Admission Code System"
 Description: "A code system for source of admission"
+* ^status = #draft
 * #0 "Eigen woonomgeving" "Own living environment."
 * #1 "Instelling voor revalidatie" "Rehabilitation facility."
 * #2 "Instelling voor verpleging/verzorging" "Nursing/care facility."
@@ -80,9 +80,9 @@ Description: "A code system for source of admission"
 // -------------------------------------------------------------------------------
 CodeSystem: AIOCDestinationAfterDischargeCS
 Id: AIOCDestinationAfterDischargeCS
-status: #draft
 Title: "AIOC Destination After Discharge Code System"
 Description: "A code system for destination after discharge"
+* ^status = #draft
 * #0 "Eigen woonomgeving" "Own living environment."
 * #1 "Instelling voor revalidatie" "Rehabilitation facility."
 * #2 "Instelling voor verpleging/verzorging" "Nursing/care facility."

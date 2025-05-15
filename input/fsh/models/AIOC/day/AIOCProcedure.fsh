@@ -1,9 +1,9 @@
 // -------------------------------------------------------------------------------
 //  Logical Model
 // -------------------------------------------------------------------------------
-Logical: AIOCProcedure
-Id: AIOCProcedure
-Title: "AIOC verrichtingen"
+Logical: AIOCDayProcedure
+Id: AIOCDayProcedure
+Title: "AIOC dag verrichtingen"
 Description:  """Logisch model voor de tabel `verrichtingen` zoals gebruikt binnen de use-case AIOC.
 Maturity Level: 0 Draft
 """
