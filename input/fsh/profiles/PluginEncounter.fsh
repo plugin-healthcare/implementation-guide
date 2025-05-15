@@ -24,6 +24,7 @@ NMvdL: Deze heet ook wel HerkomstCodelijst
 
 ### Ontslagbestemming patiënt
 Voor AIOC is het nodig te weten waar de patient na ontslag naartoe gaat. De ValueSet hiervoor moet nog aangemaakt/gekoppeld worden. [Admit source](http://hl7.org/fhir/R4/valueset-encounter-admit-source.html), de 'preferred' value set, lijkt hiervoor geschikt?
+NMvdL: Deze heet ook wel BestemmingCodelijst, zie https://simplifier.net/packages/nictiz.fhir.nl.r4.zib2020/0.11.0-beta.1/files/2627824 
 
 ### Verantwoordelijk specialisme
 In veel gevallen is het wenselijk om te achterhalen welk specialisme hoofdverantwoordelijk was voor een (deel)contact.
@@ -60,7 +61,7 @@ Alternatieven?
 )
 
 * hospitalization.admitSource MS
-* hospitalization.dischargeDisposition MS
+* hospitalization.dischargeDisposition from http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.15.1.3--20200901000000 (required)
 
 * partOf MS
 

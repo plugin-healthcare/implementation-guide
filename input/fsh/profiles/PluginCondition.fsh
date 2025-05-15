@@ -5,7 +5,7 @@ Title: "Condition"
 Description: """Condition as used within PLUGIN.
 
 Condition represents diagnoses as recorded in the EHR. This includes diagnoses
-from both clinical (e.g. problem list) or financial (e.g. DBCs) workflows. They are coded with with either a code from ICD10-NL (which includes ICD-O-3.2, see [ICD-10 NL](https://terminologie.nictiz.nl/art-decor/claml?collection=icd10-nl-data)) or the DHD DiagnoseThesaurus.
+from both clinical (e.g. problem list) or financial (e.g. DBCs) workflows. They are coded with either a code from ICD10-NL (which includes ICD-O-3.2, see [ICD-10 NL](https://terminologie.nictiz.nl/art-decor/claml?collection=icd10-nl-data)) or the DHD DiagnoseThesaurus.
 
 
 **Condition.stage**
@@ -20,6 +20,9 @@ EPIC levert in Condition.stage (in sommige gevallen?) het tumorstadium mee `"tex
 
 * verificationStatus from PluginActiveConditions
 * code 1..1 MS
+
+* category[problemType] from http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.5.1.1--20200901000000 (required)
+
 
 // At least 1 code should be present.
 * code.coding 1..

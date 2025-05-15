@@ -41,7 +41,7 @@ InstanceOf: CodeSystem
 Title: "AIOC Document Type CodeSystem"
 Description: "CodeSystem voor de verschillende types documenten die in de AIOC use-case voorkomen."
 Usage: #definition
-* url = "http://plugin.healthcare/fhir/CodeSystem/aioc-document-type"
+* url = "https://plugin.healthcare/fhir/CodeSystem/aioc-document-type"
 * name = "AIOCDocumentTypeCS"
 * status = #active
 * content = #complete
@@ -74,7 +74,7 @@ InstanceOf: ValueSet
 Title: "AIOC Document Type Value Set"
 Description: "ValueSet voor de verschillende types documenten die in de AIOC use-case voorkomen."
 Usage: #definition
-* url = "http://plugin.healthcare/fhir/ValueSet/aioc-document-type"
+* url = "https://plugin.healthcare/fhir/ValueSet/aioc-document-type"
 * name = "AIOCDocumentTypeVS"
 * status = #active
-* compose.include.system = "http://plugin.healthcare/fhir/CodeSystem/aioc-document-type"
+* compose.include.system = "https://plugin.healthcare/fhir/CodeSystem/aioc-document-type"
