@@ -22,8 +22,8 @@ profile.
 __`DiagnosticReport.category`__
 
 Epic stuurt 2 codes:
-- Pathologie|urn:oid:1.2.840.114350.1.13.357.2.7.10.798268.30
-- LAB|https://terminology.hl7.org/6.0.2/CodeSystem-v2-0074.html
+  - Pathologie (urn:oid:1.2.840.114350.1.13.357.2.7.10.798268.30)
+  - LAB (https://terminology.hl7.org/6.0.2/CodeSystem-v2-0074.html)
 
 De code `Pathologie` maakt gebruik van een codestelsel dat specifiek is voor Epic. Bij voorkeur wordt dit veranderd in `PAT` of `CP`.
 
@@ -32,8 +32,8 @@ De code `LAB` lijkt meer een overkoepelende term voor laboratoria.
 __`DiagnosticReport.code`__
 
 Epic stuurt 2 codes:
-- 67307|urn:oid:1.2.840.114350.1.13.357.2.7.2.696580
-- HISTOLOGIE|urn:oid:1.2.840.114350.1.13.357.2.7.5.737384.83
+- 67307 (urn:oid:1.2.840.114350.1.13.357.2.7.2.696580)
+- HISTOLOGIE (urn:oid:1.2.840.114350.1.13.357.2.7.5.737384.83)
 
 Beide codes maken gebruik van een Epic-specifiek OID. De (internationale) FHIR IG benoemt de voorkeur voor LOINC. In Nederland worden (waarschijnlijk) PALGA-codes gebruikt [PALGA thesaurus](https://www.palga.nl/voor-pathologen/palga-on-line-thesaurus).
 
@@ -57,34 +57,44 @@ Deze componenten zijn (nog) niet gecodeerd.
 * ^status = #draft
 * basedOn ..1
 
-* category 1..
+// Service category: this defines the report as a pathology report.
+* category 1.. 
 * category.coding ^slicing.discriminator.type = #value
 * category.coding ^slicing.discriminator.path = "system"
 * category.coding ^slicing.rules = #open
-* category.coding ^slicing.description = "Code die pathologieverslagen onderscheid van OK-verslagen, radiologieverslagen, etc."
-* category.coding contains serviceCode 1..1
+* category.coding ^slicing.description = "Code die pathologieverslagen onderscheidt van OK-verslagen, radiologieverslagen, etc."
+* category.coding contains serviceCode 1..1 MS
 * category.coding[serviceCode].system 1..1
 * category.coding[serviceCode].system = "http://terminology.hl7.org/CodeSystem/v2-0074"
 * category.coding[serviceCode].code 1..
 * category.coding[serviceCode].code from PluginPathologyReportCodes
 
+// Code van verrichting/bevinding/rapport. Palga gebruikt hier de protocolnaam.
 * code.text 1..
-* subject 1..
+
+// Patiënt
+* subject 1.. MS
 * subject only Reference(Patient or nl-core-Patient or PluginPatient)
-* performer 1..1
-* specimen 1..1
-* conclusion 1..
-* conclusionCode 1..
+
+// Nodig?
+// * performer 1..1
+// * specimen 1..1
+
+// Conclusie van het verslag in vrije tekst
+* conclusion 1.. MS
+
+// Conclusie van het verslag gecodeerd. Is deze informatie beschikbaar 
+// in een EPD?
+* conclusionCode 1.. 
 * conclusionCode.coding ^slicing.discriminator.type = #value
 * conclusionCode.coding ^slicing.discriminator.path = "system"
 * conclusionCode.coding ^slicing.rules = #open
-* conclusionCode.coding contains snomedCodes 1..1
-* conclusionCode.coding[snomedCodes].system 1..
-
+* conclusionCode.coding contains snomed_palga 1..1 MS
+* conclusionCode.coding[snomed_palga].system 1.. 
 // SNOMED_PALGA refers to a (very) old version of snomed.
-* conclusionCode.coding[snomedCodes].system = $SNOMED_PALGA
-* conclusionCode.coding[snomedCodes].code 1..
-* conclusionCode.coding[snomedCodes].display 1..
+* conclusionCode.coding[snomed_palga].system = $SNOMED_PALGA
+* conclusionCode.coding[snomed_palga].code 1..
+* conclusionCode.coding[snomed_palga].display 1..
 
 // -----------------------------------------------------------------------------
 // ValueSet

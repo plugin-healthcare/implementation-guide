@@ -15,9 +15,12 @@ EPIC levert in Condition.stage (in sommige gevallen?) het tumorstadium mee `"tex
 **TODO**:
 
 - Voor AIOC is het nodig het registrerend specialisme te kunnen achterhalen. Dit zou kunnen via [recorder](#Condition.recorder) of [asserter](#Condition.asserter). Beide attributen verwijzen naar [PractitionerRole](http://hl7.org/fhir/R4/practitionerrole.html), wat net niet helemaal overeenkomt met specialisme, maar wel een attribuut [PractionerRole.specialty](http://hl7.org/fhir/R4/practitionerrole-definitions.html#PractitionerRole.specialty) heeft.
+- Voor Pacmed is het relevant om Apache4 als terminologie systeem op te nemen.
 - Formaliseren hoe TNM wordt vastgelegd (binnen `Condition.stage`).
 """
 
+* clinicalStatus MS
+* verificationStatus MS
 * verificationStatus from PluginActiveConditions
 * code 1..1 MS
 

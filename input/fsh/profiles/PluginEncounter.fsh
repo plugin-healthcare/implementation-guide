@@ -30,11 +30,6 @@ In veel gevallen is het wenselijk om te achterhalen welk specialisme hoofdverant
 De route die hiervoor voor de hand ligt is `participant > individual (PractitionerRole) > specialty`. De nl-core (0.11.0-beta.1) bevat een profiel op PractitionerRole dat (https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.zib2020@0.11.0-beta.1&filepath=package/ValueSet-SpecialismeCodelijsten-2.16.840.1.113883.2.4.3.11.60.121.11.22--20200901000000.json)
 
 Aard van de betrokkenheid van een specialisme volgt dan via `participant > type (admit/attend/discharge)`
-
-Alternatieven?
-    - `serviceType`
-    - `serviceProvider` (Organization) met ValueSet voor Organization.type
-    - anders?
 """
 
 * status 1..1 MS

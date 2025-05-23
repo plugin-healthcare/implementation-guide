@@ -1,5 +1,5 @@
 
-<img src="assets/images/plugin-main-blue-large_ecg-nobg.svg" class="figure-img img-responsive img-rounded center-block" alt="PLUGIN Logo">
+<img src="assets/images/logo plugin rgb_groot_met iconen_kleur.svg" class="figure-img img-responsive img-rounded center-block" alt="PLUGIN Logo">
 <div style="clear:both;"></div>
 
 ### Achtergrond & Inleiding
