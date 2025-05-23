@@ -14,6 +14,11 @@ This is the IG's directory of published versions.
     <tr>
         <td> ... </td>
         <td><a href="/fhir/">stable</a></td>
-        <td>Intended to point to the current (stable) release of the IG. At least, when the first version is released.</td>
+        <td>Intended to point to the current (stable) release of the IG. At least, when the first version is released. Follows the <a href="https://github.com/plugin-healthcare/implementation-guide/releases/tag/version%2Flatest">version/latest</a> tag on GitHub.</td>
+    </tr>
+    <tr>
+        <td>2024-10-31</td>
+        <td><a href="/fhir/0.0.1/">0.0.1</a></td>
+        <td>Initial version for testing purposes.</td>
     </tr>
 </table>

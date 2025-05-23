@@ -1,5 +1,5 @@
 Profile: PluginMedicationRequest
 Parent: MedicationRequest
-Id: plugin-MedicationRequest
+Id: plugin-medicationrequest
 Title: "MedicationRequest"
 Description: "MedicationRequest as used within PLUGIN."

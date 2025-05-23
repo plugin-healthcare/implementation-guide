@@ -8,8 +8,7 @@ Profile: PluginPatient
 Parent: nl-core-Patient
 Id: plugin-patient
 Title: "Patient"
-Description: """Describes the Patient resource as used by the Dutch PLUGIN project.
-Inherits from [nl-core-Patient](https://simplifier.net/nictiz-r4-zib2020/nlcorepatient).
+Description: """Describes the Patient resource as used by the Dutch PLUGIN project. Inherits from [nl-core-Patient](https://simplifier.net/nictiz-r4-zib2020/nlcorepatient). Maturity Level: 0 Draft. Open issues see [Github](https://github.com/orgs/plugin-healthcare/projects/7/views/8?filterQuery=fhir-profile%3APluginPatient).
 """
 
 * identifier 1..* MS

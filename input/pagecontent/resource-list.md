@@ -7,6 +7,9 @@ De belangrijkste profielen voor PLUGIN op een rijtje:
         <th style="border-bottom: 1px solid black;">Description</th>
     </tr>
     <tr>
+        <td>Organization</td><td><a href="StructureDefinition-plugin-organization.html">Organization</a></td><td>Organization</td>
+    </tr>
+    <tr>
         <td>Patient</td><td><a href="StructureDefinition-plugin-patient.html">Patient</a></td><td>Patient</td>
     </tr>
     <tr>

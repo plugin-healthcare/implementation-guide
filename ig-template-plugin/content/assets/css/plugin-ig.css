@@ -1,6 +1,12 @@
 /* FHIR family-specific colors */
+/* PLUGIN colors:
+  dark blue: #053c5c
+  blue: #0588a6
+  light blue: #bbe2ee
+  orange: #f28729
+ */
 :root {
-  --navbar-bg-color: #053c5c; /* 2. Header container color */
-  --footer-container-bg-color: #053c5c; /* 4. Footer container color */
+  --navbar-bg-color: #0588a6; /* 2. Header container color */
+  --footer-container-bg-color: #0588a6; /* 4. Footer container color */
   --btn-hover-color: #f28729;  /* 6. Menu button hover color */
 }
