@@ -126,12 +126,14 @@ menu:
     Aanlevering NKR: use-case-NKR-item.html
     Palliatieve Zorg: use-case-palliative-care.html
     EzaPredictive: use-case-EzaPredictive.html
+    AIOC: use-case-AIOC.html
   # Logische modellen: artifacts.html#structures-logical-models
   Profielen: 
     PLUGIN: artifacts.html#plugin-profielen
     NKR Logical Model: artifacts.html#logical-models-nkr
     AIOC Logical Model: artifacts.html#logical-models-aioc
     Palliatieve Zorg Logical Model: artifacts.html#logical-models-palliatieve-zorg
+    EZA Logical Model: artifacts.html#logical-models-EZA
   Issues: 
     Project (per resource): https://github.com/orgs/plugin-healthcare/projects/7
     Alle issues: https://github.com/plugin-healthcare/implementation-guide/issues
@@ -260,6 +262,25 @@ groups:
         - StructureDefinition/AIOCCondition
         - StructureDefinition/AIOCEpisodeOfCare
         - StructureDefinition/AIOCProcedure
+        - StructureDefinition/AIOCDayAdmission
+        - StructureDefinition/AIOCDayDocument
+        - StructureDefinition/AIOCDayProcedure
+    EZA:
+        name: Logical Models - EzaPredictive
+        description: Logical Models voor de use case EzaPredictive van EZA
+        resources:
+        - StructureDefinition/EzaPatient
+        - StructureDefinition/EzaERvisit
+        - StructureDefinition/EzaAdmission
+        - StructureDefinition/EzaCondition
+        - StructureDefinition/EzaLab
+        - StructureDefinition/EzaMed
+        - StructureDefinition/EzaObservation
+        - StructureDefinition/EzaOps
+        - StructureDefinition/EzaOrd
+        - StructureDefinition/EzaECG
+        - StructureDefinition/EzaRadiologyReport
+        
   # IKNL:
   #     name: NKR Onderzoeksbestanden        
   #     description: Logical Models voor de NKR-use case

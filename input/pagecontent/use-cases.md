@@ -1,6 +1,6 @@
 Binnen PLUGIN worden vanuit DHD, EZA, en IKNL 5 use cases uitgewerkt:
 
-1. AI-ondersteund-coderen
+1. [AI-ondersteund coderen](use-case-AIOC.html): Coderen van ICD-10 codes uit verslaglegging van (dag)opname
 2. [NKR-item](use-case-NKR-item.html)
 3. Signalering van metastasen op afstand
 4. [Dashboard](use-case-palliative-care.html) voor de Palliatieve Zorg

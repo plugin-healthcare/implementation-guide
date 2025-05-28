@@ -60,3 +60,7 @@ If sushi complains about snapshots (_"Structure Definition http://nictiz.nl/fhir
 
 > [!warning]
 > The above uses version 0.11.0 of the nl-core package. Please note that version numbers may have changed the meantime.
+
+### Case sensitive files
+
+When you run into case-sensitivity issues in the IG compile process, run `make clean` and try again. This can be related to MacOS or Windows not using case-sensitive file paths and sushi reusing outdated renamed cached output files.   
