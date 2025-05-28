@@ -19,7 +19,7 @@ De belangrijkste profielen voor PLUGIN op een rijtje:
         <td>Condition</td><td><a href="StructureDefinition-plugin-condition.html">Condition</a></td><td>Condition</td>
     </tr>
     <tr>
-        <td>DiagnosticReport</td><td><a href="StructureDefinition-plugin-pathologyreport.html">DiagnosticReport - Pathology</a></td><td>DiagnosticReport - Pathology</td>
+        <td>DiagnosticReport</td><td><a href="StructureDefinition-plugin-PathologyReport.html">DiagnosticReport - Pathology</a></td><td>DiagnosticReport - Pathology</td>
     </tr>
 </table>
 

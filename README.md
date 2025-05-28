@@ -54,9 +54,13 @@ chmod +x _genonce.sh
 If sushi complains about snapshots (_"Structure Definition http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient is missing a snapshot. Snapshot is required for import."_), please follow these steps:
 
 1. Download the package [nictiz.fhir.nl.r4.nl-core](https://simplifier.net/packages/nictiz.fhir.nl.r4.nl-core) **with snapshots** from Simplifier.
-2. Overwrite the contents of `~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.10.0/package` with the contents of the downloaded `tgz`.
+2. Overwrite the contents of `~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.11.0/package` with the contents of the downloaded `tgz`.
 3. Re-run `sushi`.
 
 
 > [!warning]
-> The above uses version 0.10.0 of the nl-core package. Please note that version numbers may have changed the meantime.
+> The above uses version 0.11.0 of the nl-core package. Please note that version numbers may have changed the meantime.
+
+### Case sensitive files
+
+When you run into case-sensitivity issues in the IG compile process, run `make clean` and try again. This can be related to MacOS or Windows not using case-sensitive file paths and sushi reusing outdated renamed cached output files.   

@@ -16,6 +16,10 @@ Description: """Contactmoment tussen patiënt en zorgverlener. Maturity Level: 0
 * subject 1..1 MS
 * subject only Reference(Patient or nl-core-Patient)
 
+// add start and end datetime of encounter (only start is mandatory)
+* period.start 1..1 MS
+* period.end 1..1 MS
+
 // healthProfessional is defined in nl-core-Encounter
 * participant[healthProfessional] MS
 * participant[healthProfessional].type MS
@@ -26,7 +30,7 @@ Description: """Contactmoment tussen patiënt en zorgverlener. Maturity Level: 0
 )
 
 * hospitalization.admitSource MS
-* hospitalization.dischargeDisposition MS
+* hospitalization.dischargeDisposition from http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.15.1.3--20200901000000 (required)
 
 * partOf MS
 

@@ -10,6 +10,9 @@ Description: """Condition as used within PLUGIN. Maturity Level: 0 Draft. Open i
 * verificationStatus from PluginActiveConditions
 * code 1..1 MS
 
+* category[problemType] from http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.5.1.1--20200901000000 (required)
+
+
 // At least 1 code should be present.
 * code.coding 1..
 
