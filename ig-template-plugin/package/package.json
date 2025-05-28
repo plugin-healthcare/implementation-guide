@@ -3,8 +3,8 @@
   "type" : "fhir.template",
   "license" : "CC0-1.0",
   "description" : "PLUGIN IG Template",
-  "author" : "https://plugin.healthacare",
-  "canonical" : "https://plugin.healthacare/templates/fhir.template",
+  "author" : "https://plugin.healthcare",
+  "canonical" : "https://plugin.healthcare/templates/fhir.template",
   "base" : "fhir.base.template",
   "dependencies" : {
     "fhir.base.template" : "current"

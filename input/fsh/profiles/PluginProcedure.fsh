@@ -3,11 +3,10 @@ Alias: $workflow-episodeOfCare = http://hl7.org/fhir/StructureDefinition/workflo
 
 Profile: PluginProcedure
 Parent: nl-core-Procedure-event
-Id: plugin-Procedure
+Id: plugin-procedure
 Title: "Procedure"
 Description: """Procedure as used within PLUGIN. Inherits from
-[nl-core-Procedure-event](https://simplifier.net/nictiz-r4-zib2020/nlcoreprocedureevent).
-
+[nl-core-Procedure-event](https://simplifier.net/nictiz-r4-zib2020/nlcoreprocedureevent). Maturity Level: 0 Draft. Open issues see [Github](https://github.com/orgs/plugin-healthcare/projects/7/views/8?filterQuery=fhir-profile%3APluginProcedure).
 """
 * ^status = #draft
 * extension 1..

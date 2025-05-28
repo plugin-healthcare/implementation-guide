@@ -1,5 +1,6 @@
 node_modules/*
-_ig-template-fhir.unused/*
+.direnv/*
+.venv/*
 fsh-generated/*
 output/*
 input-cache/*
@@ -8,4 +9,5 @@ template/*
 .secrets
 .vscode/*
 src/*
-node_modules/*
+node_modules
+**/.DS_Store

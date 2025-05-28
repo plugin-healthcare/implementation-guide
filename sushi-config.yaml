@@ -5,7 +5,8 @@ name: PLUGIN
 title: PLUGIN
 description: This guide describes the information model for PLUGIN.
 status: draft # draft | active | retired | unknown
-version: 0.1.0-ci #
+# version: 0.1.0-ci
+version: 0.0.2-ci
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2024+
 releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
@@ -48,7 +49,7 @@ dependencies:
 # then the title will be generated from the file name.  If a
 # generation value is not provided, it will be inferred from the
 # file name extension.  Any subproperties that are valid filenames
-# with supported extensions (e.g., .md/.xml) will be treated as
+# with supported extension`s (e.g., .md/.xml) will be treated as
 # sub-pages.
 #
 # pages:
@@ -119,30 +120,35 @@ parameters: #see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Pa
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
+  About: about.html
   Use cases:
     Overzicht: use-cases.html
     Aanlevering NKR: use-case-NKR-item.html
     Palliatieve Zorg: use-case-palliative-care.html
     EzaPredictive: use-case-EzaPredictive.html
-  About: about.html
-  All Artifacts: artifacts.html
-  Logische modellen: artifacts.html#structures-logical-models
-  Resource list: resource-list.html
-  Issues: https://github.com/plugin-healthcare/implementation-guide/issues
-  Profielen: artifacts.html#structures-resource-profiles
+  # Logische modellen: artifacts.html#structures-logical-models
+  Profielen: 
+    PLUGIN: artifacts.html#plugin-profielen
+    NKR Logical Model: artifacts.html#logical-models-nkr
+    AIOC Logical Model: artifacts.html#logical-models-aioc
+    Palliatieve Zorg Logical Model: artifacts.html#logical-models-palliatieve-zorg
+  Issues: 
+    Project (per resource): https://github.com/orgs/plugin-healthcare/projects/7
+    Alle issues: https://github.com/plugin-healthcare/implementation-guide/issues
   Support:
-    FHIR Spec: new-tab https://hl7.org/fhir/index.html
+    FHIR R4 Spec: new-tab https://hl7.org/fhir/R4/index.html
     FHIR IPS: new-tab https://hl7.org/fhir/uv/ips/index.html
     Artefacts (JSON): definitions.json.zip
     Artefacts (XML): definitions.xml.zip
     Download IG: full-ig.zip
   Links:
+    Zorgviewer-IG RIVO Noord: https://github.com/RIVO-Noord/zorgviewer-ig/tree/master
     SQL-on-FHIR: new-tab https://fhir.github.io/sql-on-fhir-v2
     Pathling: new-tab https://pathling.csiro.au/docs/libraries/encoders
     hdc-sql-on-fhir: new-tab https://github.com/PharmAccess/hdc-sql-on-fhir
     FSHSchool - Deep Dive with FSH: new-tab https://fshschool.org/courses/fsh-seminar/04-deep-dive-with-fsh.html
     PALGA Profielen op Simplifier: new-tab https://simplifier.net/iknl-palga-r4/~resources?fhirVersion=R4&sortBy=LastUpdateDate_desc
-    Zorgviewer-IG RIVO Noord: https://github.com/RIVO-Noord/zorgviewer-ig/tree/master
+    EHDS Logical Information Models (Xt-EHR): https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/
     Informatiestandaard Geboortezorg: https://informatiestandaarden.nictiz.nl/wiki/Landingspagina_Geboortezorg
   GitHub: new-tab https://github.com/plugin-healthcare/implementation-guide
 
@@ -215,6 +221,54 @@ menu:
 # URL when generating the IG JSON.
 #
 #groups:
+groups:
+    PLUGIN:
+        name: PLUGIN Profielen
+        description: PLUGIN Profielen. Zowel bedoeld voor gebruik binnen de kliniek (primair gebruik) als voor secundaire toepassingen, zoals onderzoek.
+        resources:
+        - StructureDefinition/plugin-organization
+        - StructureDefinition/plugin-patient
+        - StructureDefinition/plugin-encounter
+        - StructureDefinition/plugin-condition
+        - StructureDefinition/plugin-pathologyreport
+        - StructureDefinition/plugin-procedure
+        - StructureDefinition/plugin-medication
+        - StructureDefinition/plugin-medicationrequest
+        - StructureDefinition/plugin-medicationadministration
+        - StructureDefinition/plugin-practitionerrole-specialty
+        - StructureDefinition/plugin-DBC
+    NKR:
+        name: Logical Models - NKR
+        description: Logical Models voor de NKR-use case
+        resources:
+        - StructureDefinition/NKRPatient
+        - StructureDefinition/NKREncounter
+        - StructureDefinition/NKRTumor
+        - StructureDefinition/NKRTumorHNC
+    PC:
+        name: Logical Models - Palliatieve Zorg
+        description: Logical Models voor de use-case Palliatieve Zorg
+        resources:
+        - StructureDefinition/PCPatient
+        - StructureDefinition/PCEncounter
+    AIOC:
+        name: Logical Models - AIOC
+        description: Logical Models voor de use case AI-ondersteund coderen
+        resources:
+        - StructureDefinition/AIOCAdmission
+        - StructureDefinition/AIOCCommunication
+        - StructureDefinition/AIOCCondition
+        - StructureDefinition/AIOCEpisodeOfCare
+        - StructureDefinition/AIOCProcedure
+  # IKNL:
+  #     name: NKR Onderzoeksbestanden        
+  #     description: Logical Models voor de NKR-use case
+  #     resources:
+  #     - StructureDefinition/NKRKern
+  #     - StructureDefinition/NKRGebeurtenis
+  #     - StructureDefinition/NKRGebeurtenisGegeven
+  #     - StructureDefinition/NKRBehandeling
+  #     - StructureDefinition/NKRUitslag
 
 #
 # The ImplementationGuide resource defines several other properties
