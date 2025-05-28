@@ -230,7 +230,7 @@ groups:
         - StructureDefinition/plugin-patient
         - StructureDefinition/plugin-encounter
         - StructureDefinition/plugin-condition
-        - StructureDefinition/plugin-pathologyreport
+        - StructureDefinition/plugin-PathologyReport
         - StructureDefinition/plugin-procedure
         - StructureDefinition/plugin-medication
         - StructureDefinition/plugin-medicationrequest
