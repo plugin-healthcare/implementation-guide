@@ -6,7 +6,7 @@ title: PLUGIN
 description: This guide describes the information model for PLUGIN.
 status: draft # draft | active | retired | unknown
 # version: 0.1.0-ci
-version: 0.0.2-ci
+version: 0.0.3-ci
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2024+
 releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
