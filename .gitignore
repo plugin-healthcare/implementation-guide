@@ -10,3 +10,4 @@ template/*
 src/*
 node_modules
 **/.DS_Store
+*.index.db
