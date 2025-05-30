@@ -7,7 +7,18 @@ De informatiestandaard is uitgewerkt aan de hand van enkele [logische modellen](
 
 De wijze waarop de data, conform voorgenoemde profielen, wordt ontsloten, dient nog te worden uitgewerkt. Momenteel worden verschillende opties overwogen, waaronder:
 * De FHIR [RESTful API](http://hl7.org/fhir/R4/http.html)
-* Een (shared) folder met NDJSON bestanden
+* Een lokaal data lake, bijvoorbeeld een (shared) folder met NDJSON bestanden
+
+
+### Interpretatie van Must Support (MS) flags
+
+Binnen deze IG wordt gebruik gemaakt van de Must Support (MS) flag. Deze flags kunnen worden gedeinieerd voor attributen en worden in de profielen weergegeven met <span style="padding-left: 3px; padding-right: 3px; color: white; background-color: red" title="This element must be supported">S</span>. 
+
+Wanneer deze flag voor een attribuut gedefinieerd is, wordt verwacht dat dit attribuut ...
+1. Ondersteund wordt door de systemen die deze IG gebruiken
+2. Bevolkt wordt _indien de gegevens beschikbaar zijn_.
+
+Het tweede punt maakt het mogelijk/makkelijker om conclusies te verbinden aan de afwezigheid van gegevens. Neem bijvoorbeeld de resource [Encounter](StructureDefinition-plugin-encounter.html). Hier heeft het attribuut [period.end](StructureDefinition-plugin-encounter-definitions.html#Encounter.period.end) een Must Support flag. Als een resource wordt opgevraagd die nog loopt en geen (verwachte) einddatum heeft, mag `period.end` leeg blijven. Is er wél een (verwachte) einddatum, dan dient deze meegestuurd te worden.
 
 
 #### Versiebeheer
