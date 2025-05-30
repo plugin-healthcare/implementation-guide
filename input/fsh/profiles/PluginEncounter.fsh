@@ -16,6 +16,11 @@ Description: """Contactmoment tussen patiënt en zorgverlener. Maturity Level: 0
 * subject 1..1 MS
 * subject only Reference(Patient or nl-core-Patient)
 
+// Add start and end datetime of encounter. Neither is mandatory to allow for encounters
+// that still need to be scheduled.
+* period.start MS
+* period.end MS
+
 // healthProfessional is defined in nl-core-Encounter
 * participant[healthProfessional] MS
 * participant[healthProfessional].type MS
