@@ -29,9 +29,11 @@ copyright: >-
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
-  hl7.fhir.uv.ips: current
-  nictiz.fhir.nl.r4.nl-core: 0.11.0-beta.1
-  nictiz.fhir.nl.r4.zib2020: 0.10.0-beta.1
+  # hl7.fhir.uv.ips: current
+  nictiz.fhir.nl.r4.nl-core: 0.12.0-beta.1
+  nictiz.fhir.nl.r4.zib2020: 0.12.0-beta.1
+  ihe.iti.mhd: 4.2.2
+
   #hl7.fhir.eu.extensions.r4: current
   #hl7.fhir.extensions.r5: 4.0.1
 
@@ -235,6 +237,7 @@ groups:
         - StructureDefinition/plugin-medicationrequest
         - StructureDefinition/plugin-medicationadministration
         - StructureDefinition/plugin-practitionerrole-specialty
+        - StructureDefinition/plugin-documentreference
         - StructureDefinition/plugin-DBC
     NKR:
         name: Logical Models - NKR

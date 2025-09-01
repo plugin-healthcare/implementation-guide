@@ -54,8 +54,10 @@ chmod +x _genonce.sh
 If sushi complains about snapshots (_"Structure Definition http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient is missing a snapshot. Snapshot is required for import."_), please follow these steps:
 
 1. Download the package [nictiz.fhir.nl.r4.nl-core](https://simplifier.net/packages/nictiz.fhir.nl.r4.nl-core) **with snapshots** from Simplifier.
-2. Overwrite the contents of `~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.10.0/package` with the contents of the downloaded `tgz`.
-3. Re-run `sushi`.
+1. Download the package [nictiz.fhir.nl.r4.zib2020](https://simplifier.net/packages/nictiz.fhir.nl.r4.zib2020) **with snapshots** from Simplifier.
+3. Overwrite the contents of `~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.12.0/package` with the contents of the downloaded `tgz`.
+4. Overwrite the contents of `~/.fhir/packages/nictiz.fhir.nl.r4.zib2020#0.12.0/package` with the contents of the downloaded `tgz`.
+5. Re-run `sushi`.
 
 
 > [!warning]
