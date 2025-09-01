@@ -23,7 +23,7 @@ all: build open
 build: sushi ig
 
 sushi:
-	@sushi
+	@sushi build --log-level error
 
 ig:
 	mkdir -p temp
