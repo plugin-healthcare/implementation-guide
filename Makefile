@@ -47,8 +47,12 @@ install-dependencies:
 	tar xzf vendor/nictiz.fhir.nl.r4.zib2020-0.11.0-beta.1-snapshots.tgz -C ~/.fhir/packages/nictiz.fhir.nl.r4.zib2020#0.11.0-beta.1
 	tar xzf vendor/nictiz.fhir.nl.r4.zib2020-0.12.0-beta.1-snapshots.tgz -C ~/.fhir/packages/nictiz.fhir.nl.r4.zib2020#0.12.0-beta.1
 
-	sed -i '' 's/4.0.x/4.0.1/g' "~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.12.0-beta.1/package/package.json"
-	sed -i '' 's/4.0.x/4.0.1/g' "~/.fhir/packages/nictiz.fhir.nl.r4.zib2020#0.12.0-beta.1/package/package.json"
+	# sed -i '' 's/4.0.x/4.0.1/g' "~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.12.0-beta.1/package/package.json"
+	# sed -i '' 's/4.0.x/4.0.1/g' "~/.fhir/packages/nictiz.fhir.nl.r4.zib2020#0.12.0-beta.1/package/package.json"
+
+	perl -i -pe 's/4.0.x/4.0.1/g' ~/.fhir/packages/nictiz.fhir.nl.r4.nl-core#0.12.0-beta.1/package/package.json
+	perl -i -pe 's/4.0.x/4.0.1/g' ~/.fhir/packages/nictiz.fhir.nl.r4.zib2020#0.12.0-beta.1/package/package.json
+
 
 # Deploy an intermediate version to https://plugin.healthcare/fhir. Generally
 # not needed, as this will happen automatically when pushing to Github.
