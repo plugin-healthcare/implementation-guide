@@ -21,7 +21,7 @@ Wanneer deze flag voor een attribuut gedefinieerd is, wordt verwacht dat dit att
 Het tweede punt maakt het mogelijk/makkelijker om conclusies te verbinden aan de afwezigheid van gegevens. Neem bijvoorbeeld de resource [Encounter](StructureDefinition-plugin-encounter.html). Hier heeft het attribuut [period.end](StructureDefinition-plugin-encounter-definitions.html#Encounter.period.end) een Must Support flag. Als een resource wordt opgevraagd die nog loopt en geen (verwachte) einddatum heeft, mag `period.end` leeg blijven. Is er wél een (verwachte) einddatum, dan dient deze meegestuurd te worden.
 
 
-#### Versiebeheer
+### Versiebeheer
 
 De IG en bijbehorende packages worden gepubliceerd op [https://plugin.healthcare/fhir](https://plugin.healthcare/fhir). Hierbij verwijst [https://plugin.healthcare/fhir](https://plugin.healthcare/fhir) naar de laatste (minor versie van de laatste) major release. Daaronder zijn de volgende subdirectories te vinden:
 * `/ci-build`: Laatste build van de `main` branch.
