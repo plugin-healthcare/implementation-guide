@@ -10,8 +10,13 @@ Description: """Condition as used within PLUGIN. Maturity Level: 0 Draft. Open i
 * verificationStatus from PluginActiveConditions
 * code 1..1 MS
 
-// At least 1 code should be present.
-* code.coding 1..
+// This addition seems superfluous, as the nl-core profile already defined the relationship?
+// * category[problemType] from http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.5.1.1--20200901000000 (required)
+
+
+// At least 1 code *should* be present. In issue #33 we decided to not enforce 
+// this using cardinality.
+// * code.coding 1..
 
 // Define a slice for DHD diagnosethesaurus
 * code.coding ^slicing.discriminator.type = #value
@@ -30,7 +35,7 @@ Description: """Condition as used within PLUGIN. Maturity Level: 0 Draft. Open i
 * code.coding[icd10].code 1..
 
 // Rule that defines (at least) one of icd10 or dxt should be present.
-* code.coding obeys plugin-condition-1
+// * code.coding obeys plugin-condition-1
 
 
 // Laterality extension from zibs2020
