@@ -43,16 +43,27 @@ Description: """DiagnosticReport as used within PLUGIN for Pathology. Maturity L
 
 // Conclusie van het verslag gecodeerd. Is deze informatie beschikbaar 
 // in een EPD?
-* conclusionCode 1.. 
+* conclusionCode MS
+
+// Palga-flavoured SNOMED
 * conclusionCode.coding ^slicing.discriminator.type = #value
 * conclusionCode.coding ^slicing.discriminator.path = "system"
 * conclusionCode.coding ^slicing.rules = #open
-* conclusionCode.coding contains snomed_palga 1..1 MS
+* conclusionCode.coding contains snomed_palga 0..1 MS
 * conclusionCode.coding[snomed_palga].system 1.. 
 // SNOMED_PALGA refers to a (very) old version of snomed.
 * conclusionCode.coding[snomed_palga].system = $SNOMED_PALGA
 * conclusionCode.coding[snomed_palga].code 1..
 * conclusionCode.coding[snomed_palga].display 1..
+
+// ICD-o-3
+* conclusionCode.coding contains icdo3 0..1 MS
+* conclusionCode.coding[icdo3].system 1.. 
+* conclusionCode.coding[icdo3].system = "http://terminology.hl7.org/CodeSystem/icd-o-3"
+* conclusionCode.coding[icdo3].code 1..
+* conclusionCode.coding[icdo3].display 1..
+
+
 
 // -----------------------------------------------------------------------------
 // ValueSet
