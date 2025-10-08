@@ -43,7 +43,7 @@ Description: """Condition as used within PLUGIN. Maturity Level: 0 Draft. Open i
 
 * encounter MS
 
-* recordedDate 1..1 MS
+* recordedDate MS
 
 // Probably need just 1 of these ..?
 * recorder MS
