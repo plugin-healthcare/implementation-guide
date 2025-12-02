@@ -22,7 +22,7 @@ Description: """Condition as used within PLUGIN. Maturity Level: 0 Draft. Open i
 * code.coding ^slicing.discriminator.type = #value
 * code.coding ^slicing.discriminator.path = "system"
 * code.coding ^slicing.rules = #open
-* code.coding contains dhd_dx_th 0..1
+* code.coding contains dhd_dx_th 0..1 MS
 * code.coding[dhd_dx_th].system = $DHD_DX_TH
 * code.coding[dhd_dx_th].code 1..
 
@@ -30,9 +30,19 @@ Description: """Condition as used within PLUGIN. Maturity Level: 0 Draft. Open i
 * code.coding ^slicing.discriminator.type = #value
 * code.coding ^slicing.discriminator.path = "system"
 * code.coding ^slicing.rules = #open
-* code.coding contains icd10 0..1
+* code.coding contains icd10 0..1 MS
 * code.coding[icd10].system = $ICD10NL
 * code.coding[icd10].code 1..
+
+// Define a slice for SNOMED
+* code.coding ^slicing.discriminator.type = #value
+* code.coding ^slicing.discriminator.path = "system"
+* code.coding ^slicing.rules = #open
+* code.coding contains snomed 0..1 MS
+* code.coding[snomed].system = $SNOMED
+* code.coding[snomed].code 1..
+
+
 
 // Rule that defines (at least) one of icd10 or dxt should be present.
 // * code.coding obeys plugin-condition-1
