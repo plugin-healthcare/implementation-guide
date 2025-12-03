@@ -49,6 +49,11 @@ jobs:
           TAG=${GITHUB_REF#refs/*/}
           VERSION=${TAG#version/*}
 
+      - id: echo
+        name: Echo version tag to stdout
+        run: |
+          echo "Version tag: ${VERSION}" >> $GITHUB_OUTPUT
+      
     outputs:
       version: ${{ steps.split.outputs.version }}
 
