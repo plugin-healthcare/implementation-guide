@@ -52,7 +52,7 @@ jobs:
       - id: echo
         name: Echo version tag to stdout
         run: |
-          echo "Version tag: ${VERSION}" >> $GITHUB_OUTPUT
+          echo "Version tag: ${VERSION}"
       
     outputs:
       version: ${{ steps.split.outputs.version }}
