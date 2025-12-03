@@ -29,7 +29,7 @@ env:
 jobs:
   # Check that the tag that is being used starts with `version/`. If
   # this is not the case, this tag is not intended for release.
-  version:
+  job_version:
     name: Verify and extract version tag
     runs-on: ubuntu-latest
     steps:
@@ -55,27 +55,23 @@ jobs:
           echo "TAG: ${TAG}" 
           echo "Version tag: ${VERSION}"
       
-      # - id: echo
-      #   name: Echo version tag(s) to stdout
-      #   run: |
-      #     echo "GITHUB_REF: ${GITHUB_REF}"
-      #     echo "TAG: ${TAG}"
-      #     echo "Version tag: ${VERSION}"
-      
     outputs:
       version: ${{ steps.split.outputs.VERSION }}
 
   # Build job
   build:
     name: Run IG-publisher and deploy new version to https://plugin.healthcare/fhir
-    needs: version
+    needs: job_version
     runs-on: ubuntu-latest
     steps:
       - name: Debugging ...
         env:
-          version: ${{ needs.version.outputs.version }}
+          VERSION: ${{ needs.version.outputs.version }}
         run: |
           echo "Version tag: ${VERSION}"
+          echo "Version tag: '${VERSION}'"
+          echo "Version tag: $VERSION"
+          echo "Version tag: '$VERSION'"
       
       - name: Install GraphViz and Jekyll
         # run: sudo apt update; sudo apt install -y graphviz jekyll
