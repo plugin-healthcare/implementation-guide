@@ -107,10 +107,14 @@ jobs:
         if: ${{ needs.version.outputs.version == 'latest' }}
         env:
           version: ${{ needs.version.outputs.version }}
-        run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/
+        run: |
+          echo "Version tag: ${VERSION}"
+          rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/
 
       - name: Deploy 'version' with ssh
         if: ${{ needs.version.outputs.version != 'latest' }}
         env:
           version: ${{ needs.version.outputs.version }}
-        run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/${version}
+        run: |
+          echo "Version tag: ${VERSION}"
+          rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/${version}
