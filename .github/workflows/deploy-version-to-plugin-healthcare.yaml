@@ -48,8 +48,11 @@ jobs:
         run: |
           TAG=${GITHUB_REF#refs/*/}
           VERSION=${TAG#version/*}
+          echo "TAG=${GITHUB_REF#refs/*/}" >> "$GITHUB_OUTPUT"
+          echo "VERSION=${TAG#version/*}" >> "$GITHUB_OUTPUT"
+          
           echo "GITHUB_REF: ${GITHUB_REF}"
-          echo "TAG: ${TAG}"
+          echo "TAG: ${TAG}" 
           echo "Version tag: ${VERSION}"
       
       # - id: echo
@@ -60,7 +63,7 @@ jobs:
       #     echo "Version tag: ${VERSION}"
       
     outputs:
-      version: ${{ steps.split.outputs.version }}
+      version: ${{ steps.split.outputs.VERSION }}
 
   # Build job
   build:
@@ -68,6 +71,12 @@ jobs:
     needs: version
     runs-on: ubuntu-latest
     steps:
+      - name: Debugging ...
+        env:
+          version: ${{ needs.version.outputs.version }}
+        run: |
+          echo "Version tag: ${VERSION}"
+      
       - name: Install GraphViz and Jekyll
         # run: sudo apt update; sudo apt install -y graphviz jekyll
         run: |
