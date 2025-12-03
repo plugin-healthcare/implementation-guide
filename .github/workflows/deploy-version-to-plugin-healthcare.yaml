@@ -44,15 +44,20 @@ jobs:
         uses: andymckay/cancel-action@0.2
 
       - id: split
-        name: Extract version string from tag
+        name: Extract version string from tag and echo to stdout
         run: |
           TAG=${GITHUB_REF#refs/*/}
           VERSION=${TAG#version/*}
-
-      - id: echo
-        name: Echo version tag to stdout
-        run: |
+          echo "GITHUB_REF: ${GITHUB_REF}"
+          echo "TAG: ${TAG}"
           echo "Version tag: ${VERSION}"
+      
+      # - id: echo
+      #   name: Echo version tag(s) to stdout
+      #   run: |
+      #     echo "GITHUB_REF: ${GITHUB_REF}"
+      #     echo "TAG: ${TAG}"
+      #     echo "Version tag: ${VERSION}"
       
     outputs:
       version: ${{ steps.split.outputs.version }}
