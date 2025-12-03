@@ -61,4 +61,4 @@ If sushi complains about snapshots (_"Structure Definition http://nictiz.nl/fhir
 
 
 > [!warning]
-> The above uses version 0.10.0 of the nl-core package. Please note that version numbers may have changed the meantime.
+> The above uses version 0.12.0 of the nl-core package. Please note that version numbers may have changed the meantime.

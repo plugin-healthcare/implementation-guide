@@ -1,4 +1,12 @@
-<p><strong>{{include.caption | default: ""}}</strong></p>
-<img src="{{include.img}}" class="figure-img img-responsive img-rounded center-block" 
-  alt="{{include.caption}}" style="width:{{include.width}}">
-<div style="clear:both;"></div>
+<div
+  style="{{include.style | default: 'margin:15px; padding: 10px; border: 1px solid #efefef;'}} "
+  >
+  <img 
+    src="{{include.img}}" 
+    class="figure-img img-responsive img-rounded center-block" 
+    alt="{{include.caption}}" 
+    style="width: {{include.width}}"
+    />
+  <div style="clear:both;"></div>
+  <p>{{include.caption | default: ""}}</p>
+</div>
