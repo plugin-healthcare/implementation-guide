@@ -29,37 +29,6 @@ env:
 jobs:
   # Check that the tag that is being used starts with `version/`. If
   # this is not the case, this tag is not intended for release.
-  job_version:
-    name: Verify and extract version tag
-    runs-on: ubuntu-latest
-    steps:
-      # - id: echo
-      #   name: Echo to stdout
-      #   run: |
-      #     echo "GITHUB_REF=${GITHUB_REF}" >> $GITHUB_OUTPUT
-      #     echo "github.ref=${{github.ref}}" >> $GITHUB_OUTPUT
-
-      - id: verify
-        if: startsWith(github.ref, 'refs/tags/version') != true
-        uses: andymckay/cancel-action@0.2
-
-      - id: split
-        name: Extract version string from tag and echo to stdout
-        run: |
-          TAG=${GITHUB_REF#refs/*/}
-          VERSION=${TAG#version/*}
-          echo "TAG=${GITHUB_REF#refs/*/}" >> "$GITHUB_OUTPUT"
-          echo "VERSION=${TAG#version/*}" >> "$GITHUB_OUTPUT"
-          
-          echo "GITHUB_REF: ${GITHUB_REF}"
-          echo "TAG: ${TAG}" 
-          echo "Version tag: ${VERSION}"
-      
-    outputs:
-      version: ${{ steps.split.outputs.VERSION }}
-
-  # Check that the tag that is being used starts with `version/`. If
-  # this is not the case, this tag is not intended for release.
   version:
     name: Verify and extract version tag - again
     runs-on: ubuntu-latest
@@ -78,7 +47,7 @@ jobs:
           
           echo "GITHUB_REF: ${GITHUB_REF}"
           echo "TAG: ${TAG}" 
-          echo "Version tag: ${VERSION}"
+          echo "VERSION: '${VERSION}'"
       
     outputs:
       version: ${{ steps.split.outputs.VERSION }}      
@@ -86,17 +55,14 @@ jobs:
   # Build job
   build:
     name: Run IG-publisher and deploy new version to https://plugin.healthcare/fhir
-    needs: job_version
+    needs: version
     runs-on: ubuntu-latest
     steps:
       - name: Debugging ...
         env:
-          VERSION: ${{ needs.job_version.outputs.version }}
+          version: ${{ needs.version.outputs.version }}
         run: |
-          echo "Version tag: ${VERSION}"
-          echo "Version tag: '${VERSION}'"
-          echo "Version tag: $VERSION"
-          echo "Version tag: '$VERSION'"
+          echo "Version tag: '${version}'"
       
       - name: Install GraphViz and Jekyll
         # run: sudo apt update; sudo apt install -y graphviz jekyll
@@ -138,7 +104,7 @@ jobs:
         env:
           version: ${{ needs.version.outputs.version }}
         run: |
-          echo "Version tag: ${VERSION}"
+          echo "Version tag: '${version}'"
           rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/
 
       - name: Deploy 'version' with ssh
@@ -146,5 +112,5 @@ jobs:
         env:
           version: ${{ needs.version.outputs.version }}
         run: |
-          echo "Version tag: ${VERSION}"
+          echo "Version tag: '${version}'"
           rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/${version}
