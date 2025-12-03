@@ -30,27 +30,27 @@ jobs:
   # Check that the tag that is being used starts with `version/`. If
   # this is not the case, this tag is not intended for release.
   version:
-    name: Verify and extract version tag
+    name: Verify and extract version tag - again
     runs-on: ubuntu-latest
     steps:
-      # - id: echo
-      #   name: Echo to stdout
-      #   run: |
-      #     echo "GITHUB_REF=${GITHUB_REF}" >> $GITHUB_OUTPUT
-      #     echo "github.ref=${{github.ref}}" >> $GITHUB_OUTPUT
-
       - id: verify
         if: startsWith(github.ref, 'refs/tags/version') != true
         uses: andymckay/cancel-action@0.2
 
       - id: split
-        name: Extract version string from tag
+        name: Extract version string from tag and echo to stdout
         run: |
           TAG=${GITHUB_REF#refs/*/}
           VERSION=${TAG#version/*}
-
+          echo "TAG=${GITHUB_REF#refs/*/}" >> "$GITHUB_OUTPUT"
+          echo "VERSION=${TAG#version/*}" >> "$GITHUB_OUTPUT"
+          
+          echo "GITHUB_REF: ${GITHUB_REF}"
+          echo "TAG: ${TAG}" 
+          echo "VERSION: '${VERSION}'"
+      
     outputs:
-      version: ${{ steps.split.outputs.version }}
+      version: ${{ steps.split.outputs.VERSION }}      
 
   # Build job
   build:
@@ -58,6 +58,12 @@ jobs:
     needs: version
     runs-on: ubuntu-latest
     steps:
+      - name: Debugging ...
+        env:
+          version: ${{ needs.version.outputs.version }}
+        run: |
+          echo "Version tag: '${version}'"
+      
       - name: Install GraphViz and Jekyll
         # run: sudo apt update; sudo apt install -y graphviz jekyll
         run: |
@@ -97,10 +103,14 @@ jobs:
         if: ${{ needs.version.outputs.version == 'latest' }}
         env:
           version: ${{ needs.version.outputs.version }}
-        run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/
+        run: |
+          echo "Version tag: '${version}'"
+          rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/
 
       - name: Deploy 'version' with ssh
         if: ${{ needs.version.outputs.version != 'latest' }}
         env:
           version: ${{ needs.version.outputs.version }}
-        run: rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/${version}
+        run: |
+          echo "Version tag: '${version}'"
+          rsync -avz ./output/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{secrets.SSH_USER}}/public_html/fhir/${version}
