@@ -20,6 +20,8 @@ Het doel van het [PLUGIN](about-plugin.html)-programma is om klinische gegevens 
 3. Hoe zijn de gegevens gestructureerd; staan de gegevens in tabellen of JSON-bestanden? Hoe zijn relaties tussen gegevens vastgelegd?
 4. Hoe kunnen de gegevens worden benaderd; file-based access? SQL-queries? RESTful APIs?
 
+Met een Common Data Model streven we ernaar een gestandaardiseerde set gegevens te definiëren die herbruikbaar is voor het merendeel van het secundaire gebruik van klinische data. Vanuit het PLUGIN-consortium werken we samen aan een zo breed mogelijk gedragen Common Data Model, zodat ziekenhuizen voor veel projecten kunnen volstaan met één gestandaardiseerde data-extractie.
+
 Op dit moment richt de Implementatiegids zich op punten 1 t/m 3 uit de opsomming hierboven. Er wordt vooralsnog géén uitspraak gedaan over opslag van gegevens of mechanisme van benaderen. Voor toepassing binnen een datastation dient ook over punt 4 helderheid te worden verschaft. Dit is een onderwerp dat momenteel wordt uitgewerkt door [Health-RI](https://health-ri.github.io/data-station-specification/) en zal t.z.t. ook in deze IG worgen beschreven.
 
 ### De aanpak
