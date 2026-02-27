@@ -13,4 +13,7 @@ Description: """Organization as used within PLUGIN.
 * identifier 1.. MS
 * identifier[agb] 0..1 MS
 
+// Addition based on Github Issue #41.
+* identifier[ura] 0..1 MS
+
 * type[organizationType] 0..1 MS
